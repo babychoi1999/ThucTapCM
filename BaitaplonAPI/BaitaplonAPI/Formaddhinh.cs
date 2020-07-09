@@ -46,6 +46,10 @@ namespace BaitaplonAPI
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             txtMa.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            MemoryStream ms = new MemoryStream((byte[])dataGridView1.CurrentRow.Cells[2].Value);
+            hinhanh.Image = Image.FromStream(ms);
+
+
         }
 
         private void btnSua_Click(object sender, EventArgs e)

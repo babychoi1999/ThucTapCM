@@ -19,6 +19,10 @@ namespace BaitaplonAPI
             InitializeComponent();
             
         }
+        bool banhang = true;
+        bool thongke = true;
+        bool quanlykho = true;
+        bool admin = false;
         private void slide()
         {
 
@@ -36,15 +40,34 @@ namespace BaitaplonAPI
         private void bunifuFlatButton5_Click(object sender, EventArgs e)
         {
             //BTN THU CUNG
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new FrmThuCUng());
+            if (!banhang)
+            {
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(new FrmThuCUng());
+            }
+            
+           
         }
 
         private void bunifuFlatButton6_Click(object sender, EventArgs e)
         {
-            //KHACH HÀNG
-            kh1 kh = new kh1();
-            kh.Show();
+            if (!banhang || !admin)
+            {
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else {
+                //KHACH HÀNG
+                kh1 kh = new kh1();
+                kh.Show();
+            }
+
+               
         }
 
         private void bunifuFlatButton7_Click(object sender, EventArgs e)
@@ -219,20 +242,49 @@ namespace BaitaplonAPI
 
         private void btnHoaDon_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new FrmHoaDon());
+            if (!banhang)
+            {
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+
+
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(new FrmHoaDon());
+            }
         }
 
         private void btnThongTinNhanVien_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add( new Formnhanvien());
+            if(!quanlinhanvien)
+            {
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(new Formnhanvien());
+            }
+           
         }
 
         private void btnDoanhThu_Click(object sender, EventArgs e)
         {
-            DoanhThu dt = new DoanhThu();
-            dt.Show();
+            if (!thongke)
+            {
+
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                DoanhThu dt = new DoanhThu();
+                dt.Show();
+            }
+           
         }
 
         private void btnBanChay_Click(object sender, EventArgs e)
@@ -247,34 +299,68 @@ namespace BaitaplonAPI
 
         private void bunifuFlatButton8_Click_1(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new Formnhacungcap());
+            if (!quanlykho)
+            {
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(new Formnhacungcap());
+            }
+           
         }
 
         private void btnNhapKho_Click(object sender, EventArgs e)
         {
-            FrmPhieuNhap phieuNhap = new FrmPhieuNhap();
-            phieuNhap.Show();
-            
-               
-            
+            if (!quanlykho)
+            {
+
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                FrmPhieuNhap phieuNhap = new FrmPhieuNhap();
+                phieuNhap.Show();
+            }    
         }
 
         private void btnTonKho_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new UserControl1());
+            if (!quanlykho)
+            {
+
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(new UserControl1());
+            }
+            
         }
 
         private void btnLHNhaCungCap_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnLienHeKhachHang_Click(object sender, EventArgs e)
         {
-            guimail guimail = new guimail();
-            guimail.Show();
+            if (!quanlykho)
+            {
+
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                guimail gm = new guimail();
+                gm.Show();
+            }
         }
         int Num = 0;
         private void timer6_Tick(object sender, EventArgs e)
@@ -628,29 +714,71 @@ namespace BaitaplonAPI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            Console.WriteLine(user);
+            btnThuCung.Activecolor = Color.White;
+            btnThucPham.Activecolor = Color.White;
+            btnPhuKien.Activecolor = Color.White;
+            btnQuanLy.Activecolor = Color.White;
+            btnKhachHang.Activecolor = Color.White;
+            btnHoaDon.Activecolor = Color.White;
+            btnDoanhThu.Activecolor = Color.White;
+            btnThongTinNhanVien.Activecolor = Color.White;
+            btnTonKho.Activecolor = Color.White;
+            btnNhapKho.Activecolor = Color.White;
+            btnNhaCungCap.Activecolor = Color.White;
+            btnLienHeKhachHang.Activecolor = Color.White;
+            
+            phanquyen();
+            label1.Text = user;
+            
+       
         }
 
         private void btnPhuKien_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new Frmphukien());
+            if (!banhang)
+            {
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(new Frmphukien());
+            }
+           
         }
 
         private void btnThucPham_Click(object sender, EventArgs e)
         {
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(new Frmthucpham());
+            if (!banhang)
+            {
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(new Frmthucpham());
+            }
         }
         public string user;
         public string password;
         private void btnQuanLy_Click(object sender, EventArgs e)
         {
-            FrmQuanly quanly = new FrmQuanly();
-            quanly.user = user;
-            panelMain.Controls.Clear();
-            panelMain.Controls.Add(quanly);
+            if (!admin)
+            {
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                FrmQuanly quanly = new FrmQuanly();
+                quanly.user = user;
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(quanly);
+            }
+           
         }
 
         private void bunifuThinButton22_Click(object sender, EventArgs e)
@@ -675,5 +803,76 @@ namespace BaitaplonAPI
         {
             Process.Start("https://id.zalo.me/");
         }
+       
+        private bool quanlinhanvien = true;
+
+        public void phanquyen()
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                
+                string manv = quanli.DangNhaps.FirstOrDefault(p => p.UserName == user.Trim()).MaNV;
+                string macv = quanli.NhanViens.FirstOrDefault(p => p.MaNV == manv).MaCV;
+                ChucVu cv = quanli.ChucVus.FirstOrDefault(p => p.MaCV == macv);
+                Console.WriteLine(manv);
+                Console.WriteLine(macv);
+                Console.WriteLine(cv.BanHang);
+                if (cv.BanHang == false)
+                {
+                    banhang = false;
+                }
+                if (cv.Thongke == false)
+                {
+
+                    thongke = false;
+
+                }
+                if(cv.Quanlykho == false)
+                {
+                    quanlykho = false;
+                }
+                if(cv.Quanlynhanvien == false)
+                {
+                    quanlinhanvien = false;
+                }
+                if(cv.BanHang == true && cv.Quanlynhanvien ==  true && cv.Thongke == true && cv.Quanlykho == true){
+                    admin = true;
+                }
+                //else
+                //{
+                //    panelMain.Controls.Clear();
+                //    panelMain.Controls.Add(new FrmThuCUng());
+                //    dem++;dem1++;
+                //    if(dem == 0) 
+                //    {
+                //        panelMain.Controls.Clear();
+                //        panelMain.Controls.Add(new Frmthucpham());
+                //    }
+                //    if (dem1 == 0)
+                //    {
+                //        panelMain.Controls.Clear();
+                //        panelMain.Controls.Add(new Frmphukien());
+                //    }
+                //}
+                //if (cv.Thongke == false)
+                //{
+                //    btnThongKe.Click += new EventHandler(ttnhanvien);
+                //}
+                //else
+                //{
+                //    if (dem == 0)
+                //    {
+
+                //    }
+                //}
+            }
+        }
+
+        private void ttnhanvien(object sender, EventArgs e)
+        {
+            MessageBox.Show("Bạn không được cấp quyền!");
+        }
+
+       
     }
 }

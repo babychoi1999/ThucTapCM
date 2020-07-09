@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbzalo = new System.Windows.Forms.PictureBox();
+            this.pbfb = new System.Windows.Forms.PictureBox();
             this.lblN2 = new System.Windows.Forms.Label();
             this.lblƯ = new System.Windows.Forms.Label();
             this.lblG = new System.Windows.Forms.Label();
@@ -82,9 +84,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer6 = new System.Windows.Forms.Timer(this.components);
             this.panelMain = new System.Windows.Forms.Panel();
-            this.pbfb = new System.Windows.Forms.PictureBox();
-            this.pbzalo = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbzalo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.panelNhânViênCon.SuspendLayout();
             this.panelDanhMucCon.SuspendLayout();
@@ -94,14 +97,13 @@
             this.panelLienHeCon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbfb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbzalo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Khaki;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pbzalo);
             this.panel1.Controls.Add(this.pbfb);
             this.panel1.Controls.Add(this.lblN2);
@@ -128,6 +130,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1258, 106);
             this.panel1.TabIndex = 0;
+            // 
+            // pbzalo
+            // 
+            this.pbzalo.Image = ((System.Drawing.Image)(resources.GetObject("pbzalo.Image")));
+            this.pbzalo.Location = new System.Drawing.Point(1039, 0);
+            this.pbzalo.Name = "pbzalo";
+            this.pbzalo.Size = new System.Drawing.Size(111, 36);
+            this.pbzalo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbzalo.TabIndex = 30;
+            this.pbzalo.TabStop = false;
+            this.pbzalo.Click += new System.EventHandler(this.pbzalo_Click);
+            // 
+            // pbfb
+            // 
+            this.pbfb.Image = ((System.Drawing.Image)(resources.GetObject("pbfb.Image")));
+            this.pbfb.Location = new System.Drawing.Point(1147, 0);
+            this.pbfb.Name = "pbfb";
+            this.pbfb.Size = new System.Drawing.Size(111, 36);
+            this.pbfb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbfb.TabIndex = 1;
+            this.pbfb.TabStop = false;
+            this.pbfb.Click += new System.EventHandler(this.pbfb_Click);
             // 
             // lblN2
             // 
@@ -1099,27 +1123,14 @@
             this.panelMain.Size = new System.Drawing.Size(1030, 567);
             this.panelMain.TabIndex = 8;
             // 
-            // pbfb
+            // label1
             // 
-            this.pbfb.Image = ((System.Drawing.Image)(resources.GetObject("pbfb.Image")));
-            this.pbfb.Location = new System.Drawing.Point(1147, 0);
-            this.pbfb.Name = "pbfb";
-            this.pbfb.Size = new System.Drawing.Size(111, 36);
-            this.pbfb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbfb.TabIndex = 1;
-            this.pbfb.TabStop = false;
-            this.pbfb.Click += new System.EventHandler(this.pbfb_Click);
-            // 
-            // pbzalo
-            // 
-            this.pbzalo.Image = ((System.Drawing.Image)(resources.GetObject("pbzalo.Image")));
-            this.pbzalo.Location = new System.Drawing.Point(1039, 0);
-            this.pbzalo.Name = "pbzalo";
-            this.pbzalo.Size = new System.Drawing.Size(111, 36);
-            this.pbzalo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbzalo.TabIndex = 30;
-            this.pbzalo.TabStop = false;
-            this.pbzalo.Click += new System.EventHandler(this.pbzalo_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(998, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "label1";
             // 
             // FrmMain
             // 
@@ -1135,6 +1146,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbzalo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbfb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.panelNhânViênCon.ResumeLayout(false);
             this.panelDanhMucCon.ResumeLayout(false);
@@ -1144,8 +1157,6 @@
             this.panelLienHeCon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbfb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbzalo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1206,5 +1217,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnThucPham;
         private System.Windows.Forms.PictureBox pbzalo;
         private System.Windows.Forms.PictureBox pbfb;
+        private System.Windows.Forms.Label label1;
     }
 }

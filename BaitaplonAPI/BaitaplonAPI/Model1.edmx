@@ -204,6 +204,14 @@
           <Property Name="MaCV" Type="nchar" MaxLength="50" />
           <Property Name="sodienthoai" Type="int" />
         </EntityType>
+        <EntityType Name="phanquyen">
+          <Key>
+            <PropertyRef Name="MaPQ" />
+          </Key>
+          <Property Name="MaPQ" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenPQ" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaCV" Type="nchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="PhieuNhap">
           <Key>
             <PropertyRef Name="MaPN" />
@@ -596,6 +604,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_phanquyen_chucvu">
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
+          <End Role="phanquyen" Type="Self.phanquyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaCV" />
+            </Principal>
+            <Dependent Role="phanquyen">
+              <PropertyRef Name="MaCV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PhieuNhap_NhaCungCap">
           <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
           <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
@@ -907,6 +927,7 @@
           <EntitySet Name="LuongTungThang" EntityType="Self.LuongTungThang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhaCungCap" EntityType="Self.NhaCungCap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="phanquyen" EntityType="Self.phanquyen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuNhap" EntityType="Self.PhieuNhap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHUKIEN" EntityType="Self.PHUKIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -1010,6 +1031,10 @@
             <End Role="ChucVu" EntitySet="ChucVu" />
             <End Role="NhanVien" EntitySet="NhanVien" />
           </AssociationSet>
+          <AssociationSet Name="FK_phanquyen_chucvu" Association="Self.FK_phanquyen_chucvu">
+            <End Role="ChucVu" EntitySet="ChucVu" />
+            <End Role="phanquyen" EntitySet="phanquyen" />
+          </AssociationSet>
           <AssociationSet Name="FK_PhieuNhap_NhaCungCap" Association="Self.FK_PhieuNhap_NhaCungCap">
             <End Role="NhaCungCap" EntitySet="NhaCungCap" />
             <End Role="PhieuNhap" EntitySet="PhieuNhap" />
@@ -1103,6 +1128,7 @@
           <Property Name="Thongke" Type="Boolean" />
           <Property Name="Quanlykho" Type="Boolean" />
           <NavigationProperty Name="NhanViens" Relationship="Self.FK_NhanVien_ChucVu" FromRole="ChucVu" ToRole="NhanVien" />
+          <NavigationProperty Name="phanquyens" Relationship="Self.FK_phanquyen_chucvu" FromRole="ChucVu" ToRole="phanquyen" />
         </EntityType>
         <EntityType Name="CTDichVu">
           <Key>
@@ -1324,6 +1350,15 @@
           <NavigationProperty Name="PhieuNhaps" Relationship="Self.FK_PhieuNhap_NhanVien" FromRole="NhanVien" ToRole="PhieuNhap" />
           <NavigationProperty Name="ThuongPhats" Relationship="Self.FK_ThuongPhat_NhanVien" FromRole="NhanVien" ToRole="ThuongPhat" />
         </EntityType>
+        <EntityType Name="phanquyen">
+          <Key>
+            <PropertyRef Name="MaPQ" />
+          </Key>
+          <Property Name="MaPQ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenPQ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaCV" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ChucVu" Relationship="Self.FK_phanquyen_chucvu" FromRole="phanquyen" ToRole="ChucVu" />
+        </EntityType>
         <EntityType Name="PhieuNhap">
           <Key>
             <PropertyRef Name="MaPN" />
@@ -1437,6 +1472,18 @@
               <PropertyRef Name="MaCV" />
             </Principal>
             <Dependent Role="NhanVien">
+              <PropertyRef Name="MaCV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_phanquyen_chucvu">
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
+          <End Role="phanquyen" Type="Self.phanquyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaCV" />
+            </Principal>
+            <Dependent Role="phanquyen">
               <PropertyRef Name="MaCV" />
             </Dependent>
           </ReferentialConstraint>
@@ -1810,6 +1857,7 @@
           <EntitySet Name="LuongTungThangs" EntityType="Self.LuongTungThang" />
           <EntitySet Name="NhaCungCaps" EntityType="Self.NhaCungCap" />
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="phanquyens" EntityType="Self.phanquyen" />
           <EntitySet Name="PhieuNhaps" EntityType="Self.PhieuNhap" />
           <EntitySet Name="PHUKIENs" EntityType="Self.PHUKIEN" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -1824,6 +1872,10 @@
           <AssociationSet Name="FK_NhanVien_ChucVu" Association="Self.FK_NhanVien_ChucVu">
             <End Role="ChucVu" EntitySet="ChucVus" />
             <End Role="NhanVien" EntitySet="NhanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_phanquyen_chucvu" Association="Self.FK_phanquyen_chucvu">
+            <End Role="ChucVu" EntitySet="ChucVus" />
+            <End Role="phanquyen" EntitySet="phanquyens" />
           </AssociationSet>
           <AssociationSet Name="FK_CTDichVu_DichVu" Association="Self.FK_CTDichVu_DichVu">
             <End Role="DichVu" EntitySet="DichVus" />
@@ -2388,6 +2440,15 @@
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="MaCV" ColumnName="MaCV" />
                 <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="phanquyens">
+            <EntityTypeMapping TypeName="quanlithucungModel.phanquyen">
+              <MappingFragment StoreEntitySet="phanquyen">
+                <ScalarProperty Name="MaPQ" ColumnName="MaPQ" />
+                <ScalarProperty Name="TenPQ" ColumnName="TenPQ" />
+                <ScalarProperty Name="MaCV" ColumnName="MaCV" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

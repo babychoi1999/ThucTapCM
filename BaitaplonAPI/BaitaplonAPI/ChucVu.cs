@@ -18,6 +18,7 @@ namespace BaitaplonAPI
         public ChucVu()
         {
             this.NhanViens = new HashSet<NhanVien>();
+            this.phanquyens = new HashSet<phanquyen>();
         }
     
         public string MaCV { get; set; }
@@ -30,5 +31,7 @@ namespace BaitaplonAPI
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhanVien> NhanViens { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<phanquyen> phanquyens { get; set; }
     }
 }

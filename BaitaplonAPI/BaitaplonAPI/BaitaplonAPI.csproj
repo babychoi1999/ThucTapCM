@@ -375,6 +375,9 @@
     <Compile Include="NhanVien.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="phanquyen.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="PhieuNhap.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

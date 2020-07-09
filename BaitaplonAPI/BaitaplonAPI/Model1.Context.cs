@@ -47,6 +47,7 @@ namespace BaitaplonAPI
         public virtual DbSet<LuongTungThang> LuongTungThangs { get; set; }
         public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<phanquyen> phanquyens { get; set; }
         public virtual DbSet<PhieuNhap> PhieuNhaps { get; set; }
         public virtual DbSet<PHUKIEN> PHUKIENs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }

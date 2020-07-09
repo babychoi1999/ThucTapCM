@@ -4,36 +4,38 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="743737494a504ecfb7e8f982b51ded12" Name="Diagram1">
-        <EntityTypeShape EntityType="quanlithucungModel.Calamviec" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.ChucVu" Width="1.5" PointX="0.75" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.CTDichVu" Width="1.5" PointX="9.75" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.CTHoaDon" Width="1.5" PointX="9.75" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.CTNhapPhuKien" Width="1.5" PointX="10.5" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.CTNhapThucPham" Width="1.5" PointX="13.5" PointY="20.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.CTNhapThuCung" Width="1.5" PointX="13.5" PointY="24.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.CTPHUKIEN" Width="1.5" PointX="10.75" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.CTTHUCPHAM" Width="1.5" PointX="12.75" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.CTUuDai" Width="1.5" PointX="9.75" PointY="28" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.DangNhap" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.DichVu" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.HoaDon" Width="1.5" PointX="7.5" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.KhachHang" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.LoaiPhuKien" Width="1.5" PointX="6.25" PointY="31.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.LoaiThucPham" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.LoaiThuCung" Width="1.5" PointX="11.25" PointY="31" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.LuongTungThang" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.NhaCungCap" Width="1.5" PointX="6" PointY="22" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.NhanVien" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.PhieuNhap" Width="1.5" PointX="8.25" PointY="20.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.PHUKIEN" Width="1.5" PointX="8.5" PointY="30.875" IsExpanded="true" />
+      <Diagram DiagramId="6e8add7be1e54286ac5634ae2acf4e9e" Name="Diagram1">
+        <EntityTypeShape EntityType="quanlithucungModel.Calamviec" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.ChucVu" Width="1.5" PointX="0.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.CTDichVu" Width="1.5" PointX="9.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.CTHoaDon" Width="1.5" PointX="9.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.CTNhapPhuKien" Width="1.5" PointX="10.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.CTNhapThucPham" Width="1.5" PointX="13.5" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.CTNhapThuCung" Width="1.5" PointX="13.5" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.CTPHUKIEN" Width="1.5" PointX="10.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.CTTHUCPHAM" Width="1.5" PointX="12.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.CTUuDai" Width="1.5" PointX="9.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.DangNhap" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.DichVu" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.HoaDon" Width="1.5" PointX="7.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.KhachHang" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.LoaiPhuKien" Width="1.5" PointX="6.25" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.LoaiThucPham" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.LoaiThuCung" Width="1.5" PointX="11.25" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.LuongTungThang" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.NhaCungCap" Width="1.5" PointX="6" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.NhanVien" Width="1.5" PointX="3" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.phanquyen" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.PhieuNhap" Width="1.5" PointX="8.25" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.PHUKIEN" Width="1.5" PointX="8.5" PointY="31" IsExpanded="true" />
         <EntityTypeShape EntityType="quanlithucungModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.THUCPHAM" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.ThuCung" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.ThuongPhat" Width="1.5" PointX="5.25" PointY="25.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.UuDaiHD" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.THUCPHAM" Width="1.5" PointX="10.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.ThuCung" Width="1.5" PointX="7.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.ThuongPhat" Width="1.5" PointX="5.25" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.UuDaiHD" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="quanlithucungModel.FK_Calamviec_NhanVien" ManuallyRouted="false" />
         <AssociationConnector Association="quanlithucungModel.FK_NhanVien_ChucVu" ManuallyRouted="false" />
+        <AssociationConnector Association="quanlithucungModel.FK_phanquyen_chucvu" ManuallyRouted="false" />
         <AssociationConnector Association="quanlithucungModel.FK_CTDichVu_DichVu" ManuallyRouted="false" />
         <AssociationConnector Association="quanlithucungModel.FK_CTDichVu_HoaDon" ManuallyRouted="false" />
         <AssociationConnector Association="quanlithucungModel.FK_CTHoaDon_HoaDon" ManuallyRouted="false" />
