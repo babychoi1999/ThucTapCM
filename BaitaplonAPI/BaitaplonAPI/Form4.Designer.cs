@@ -28,15 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.dataSet1 = new BaitaplonAPI.DataSet1();
+            this.xuattonkhoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.xuattonkhoTableAdapter = new BaitaplonAPI.DataSet1TableAdapters.xuattonkhoTableAdapter();
+            this.maHangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenHangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.slNhapDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sLBanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tonKhoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngayLapDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xuattonkhoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(135, 88);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.maHangDataGridViewTextBoxColumn,
+            this.tenHangDataGridViewTextBoxColumn,
+            this.slNhapDataGridViewTextBoxColumn,
+            this.sLBanDataGridViewTextBoxColumn,
+            this.tonKhoDataGridViewTextBoxColumn,
+            this.ngayLapDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.xuattonkhoBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(135, 91);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(524, 248);
             this.dataGridView1.TabIndex = 0;
@@ -51,6 +72,56 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // xuattonkhoBindingSource
+            // 
+            this.xuattonkhoBindingSource.DataMember = "xuattonkho";
+            this.xuattonkhoBindingSource.DataSource = this.dataSet1;
+            // 
+            // xuattonkhoTableAdapter
+            // 
+            this.xuattonkhoTableAdapter.ClearBeforeFill = true;
+            // 
+            // maHangDataGridViewTextBoxColumn
+            // 
+            this.maHangDataGridViewTextBoxColumn.DataPropertyName = "MaHang";
+            this.maHangDataGridViewTextBoxColumn.HeaderText = "MaHang";
+            this.maHangDataGridViewTextBoxColumn.Name = "maHangDataGridViewTextBoxColumn";
+            // 
+            // tenHangDataGridViewTextBoxColumn
+            // 
+            this.tenHangDataGridViewTextBoxColumn.DataPropertyName = "TenHang";
+            this.tenHangDataGridViewTextBoxColumn.HeaderText = "TenHang";
+            this.tenHangDataGridViewTextBoxColumn.Name = "tenHangDataGridViewTextBoxColumn";
+            // 
+            // slNhapDataGridViewTextBoxColumn
+            // 
+            this.slNhapDataGridViewTextBoxColumn.DataPropertyName = "SlNhap";
+            this.slNhapDataGridViewTextBoxColumn.HeaderText = "SlNhap";
+            this.slNhapDataGridViewTextBoxColumn.Name = "slNhapDataGridViewTextBoxColumn";
+            // 
+            // sLBanDataGridViewTextBoxColumn
+            // 
+            this.sLBanDataGridViewTextBoxColumn.DataPropertyName = "SLBan";
+            this.sLBanDataGridViewTextBoxColumn.HeaderText = "SLBan";
+            this.sLBanDataGridViewTextBoxColumn.Name = "sLBanDataGridViewTextBoxColumn";
+            // 
+            // tonKhoDataGridViewTextBoxColumn
+            // 
+            this.tonKhoDataGridViewTextBoxColumn.DataPropertyName = "TonKho";
+            this.tonKhoDataGridViewTextBoxColumn.HeaderText = "TonKho";
+            this.tonKhoDataGridViewTextBoxColumn.Name = "tonKhoDataGridViewTextBoxColumn";
+            // 
+            // ngayLapDataGridViewTextBoxColumn
+            // 
+            this.ngayLapDataGridViewTextBoxColumn.DataPropertyName = "NgayLap";
+            this.ngayLapDataGridViewTextBoxColumn.HeaderText = "NgayLap";
+            this.ngayLapDataGridViewTextBoxColumn.Name = "ngayLapDataGridViewTextBoxColumn";
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -62,6 +133,8 @@
             this.Text = "Form4";
             this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xuattonkhoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -70,5 +143,14 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maHangDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenHangDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn slNhapDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sLBanDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tonKhoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayLapDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource xuattonkhoBindingSource;
+        private DataSet1 dataSet1;
+        private DataSet1TableAdapters.xuattonkhoTableAdapter xuattonkhoTableAdapter;
     }
 }

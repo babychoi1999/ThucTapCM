@@ -140,8 +140,11 @@ namespace BaitaplonAPI
                     {
                         TextBox tb = new TextBox();
                         tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                        tb.Enabled = false;
+                        tb.BackColor = Color.White;
                         tb.Size = new System.Drawing.Size(182, 13);
                         tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                        tb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))); ;
                         tb.Text = ds_thucpham[3 * count + j].Tenthucpham;
                         panelAnh.Controls.Add(tb);
 
@@ -261,12 +264,12 @@ namespace BaitaplonAPI
                 {
                     int sl = int.Parse(dgvThucPham.Rows[i].Cells["soluong"].Value.ToString()) + soluong;
                     dgvThucPham.Rows[i].Cells["soluong"].Value = sl;
-                    dgvThucPham.Rows[i].Cells["thanhtien"].Value = sl * dongia;
+                    dgvThucPham.Rows[i].Cells["thanhtien"].Value = (sl * dongia) - (sl * dongia * uudai / 100); 
                     return;
                 }
 
             }
-            int tongtien = dongia * soluong;
+            int tongtien = (soluong * dongia) - (soluong * dongia * uudai / 100);
             dgvThucPham.Rows.Add(new object[] { matp, txttenthucpham.Text, cbLoaiThucPham.Text, txtsoluong.Value.ToString(), txtdongia.Text, tongtien });
         }
 
@@ -274,6 +277,7 @@ namespace BaitaplonAPI
         {
             if (dgvThucPham.Rows.Count == 0)
             {
+                MessageBox.Show("Chưa có thông tin để lưu");
                 return;
             }
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
@@ -352,6 +356,7 @@ namespace BaitaplonAPI
         {
             if (dgvThucPham.Rows.Count == 0)
             {
+                MessageBox.Show("Chưa có hóa đơn để thanh toán");
                 return;
             }
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
@@ -389,6 +394,11 @@ namespace BaitaplonAPI
                    
                 }
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

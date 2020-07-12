@@ -81,6 +81,9 @@ namespace BaitaplonAPI
                     {
                         TextBox tb = new TextBox();
                         tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                        tb.Enabled = false;
+                        tb.BackColor = Color.White;
+                        tb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))); ;
                         tb.Size = new System.Drawing.Size(182, 30);
                         tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
                         tb.Text = ds_phukien[3 * count + j].Tenphukien;
@@ -237,12 +240,12 @@ namespace BaitaplonAPI
                 {
                     int sl = int.Parse(dgvPhuKien.Rows[i].Cells["soluong"].Value.ToString()) + soluong;
                     dgvPhuKien.Rows[i].Cells["soluong"].Value = sl;
-                    dgvPhuKien.Rows[i].Cells["thanhtien"].Value = sl * dongia;
+                    dgvPhuKien.Rows[i].Cells["thanhtien"].Value = (sl * dongia) - (sl * dongia * uudai / 100); ;
                     return;
                 }
 
             }
-            int tongtien = dongia * soluong;
+            int tongtien = dongia * soluong - (soluong * dongia * uudai / 100) ;
             dgvPhuKien.Rows.Add(new object[] { mapk, txttenphukien.Text, cbLoaiPhuKien.Text, txtsoluong.Value.ToString(), txtdongia.Text, tongtien });
         }
         public void reset()

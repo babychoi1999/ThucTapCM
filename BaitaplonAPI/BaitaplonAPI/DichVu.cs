@@ -23,6 +23,7 @@ namespace BaitaplonAPI
         public string MaDV { get; set; }
         public string TenDichVu { get; set; }
         public Nullable<double> DonGia { get; set; }
+        public byte[] Anh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTDichVu> CTDichVus { get; set; }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.pbzalo = new System.Windows.Forms.PictureBox();
             this.pbfb = new System.Windows.Forms.PictureBox();
             this.lblN2 = new System.Windows.Forms.Label();
@@ -84,7 +85,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer6 = new System.Windows.Forms.Timer(this.components);
             this.panelMain = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnDichvu = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbzalo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbfb)).BeginInit();
@@ -130,6 +131,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1258, 106);
             this.panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(998, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "label1";
             // 
             // pbzalo
             // 
@@ -424,10 +434,11 @@
             // 
             // panelNhânViênCon
             // 
+            this.panelNhânViênCon.Controls.Add(this.btnQuanLy);
             this.panelNhânViênCon.Controls.Add(this.bunifuFlatButton2);
             this.panelNhânViênCon.Controls.Add(this.btnThongTinNhanVien);
-            this.panelNhânViênCon.Location = new System.Drawing.Point(3, 129);
-            this.panelNhânViênCon.MaximumSize = new System.Drawing.Size(217, 168);
+            this.panelNhânViênCon.Location = new System.Drawing.Point(3, 130);
+            this.panelNhânViênCon.MaximumSize = new System.Drawing.Size(217, 203);
             this.panelNhânViênCon.MinimumSize = new System.Drawing.Size(217, 110);
             this.panelNhânViênCon.Name = "panelNhânViênCon";
             this.panelNhânViênCon.Size = new System.Drawing.Size(217, 110);
@@ -507,7 +518,7 @@
             // 
             // panelDanhMucCon
             // 
-            this.panelDanhMucCon.Controls.Add(this.btnQuanLy);
+            this.panelDanhMucCon.Controls.Add(this.btnDichvu);
             this.panelDanhMucCon.Controls.Add(this.btnThucPham);
             this.panelDanhMucCon.Controls.Add(this.btnPhuKien);
             this.panelDanhMucCon.Controls.Add(this.btnHoaDon);
@@ -518,7 +529,7 @@
             this.panelDanhMucCon.MaximumSize = new System.Drawing.Size(217, 399);
             this.panelDanhMucCon.MinimumSize = new System.Drawing.Size(217, 116);
             this.panelDanhMucCon.Name = "panelDanhMucCon";
-            this.panelDanhMucCon.Size = new System.Drawing.Size(217, 120);
+            this.panelDanhMucCon.Size = new System.Drawing.Size(217, 121);
             this.panelDanhMucCon.TabIndex = 3;
             // 
             // btnQuanLy
@@ -543,7 +554,7 @@
             this.btnQuanLy.IconVisible = true;
             this.btnQuanLy.IconZoom = 90D;
             this.btnQuanLy.IsTab = false;
-            this.btnQuanLy.Location = new System.Drawing.Point(21, 349);
+            this.btnQuanLy.Location = new System.Drawing.Point(20, 160);
             this.btnQuanLy.Name = "btnQuanLy";
             this.btnQuanLy.Normalcolor = System.Drawing.Color.White;
             this.btnQuanLy.OnHovercolor = System.Drawing.Color.Gold;
@@ -753,8 +764,8 @@
             this.panelSlideMenu.AutoScroll = true;
             this.panelSlideMenu.Controls.Add(this.panelDanhMucCon);
             this.panelSlideMenu.Controls.Add(this.panelNhânViênCon);
-            this.panelSlideMenu.Controls.Add(this.panelThongKeCon);
             this.panelSlideMenu.Controls.Add(this.panelHangHoaCon);
+            this.panelSlideMenu.Controls.Add(this.panelThongKeCon);
             this.panelSlideMenu.Controls.Add(this.panelLienHeCon);
             this.panelSlideMenu.Location = new System.Drawing.Point(1, 114);
             this.panelSlideMenu.Name = "panelSlideMenu";
@@ -765,7 +776,7 @@
             // 
             this.panelThongKeCon.Controls.Add(this.btnThongKe);
             this.panelThongKeCon.Controls.Add(this.btnDoanhThu);
-            this.panelThongKeCon.Location = new System.Drawing.Point(3, 245);
+            this.panelThongKeCon.Location = new System.Drawing.Point(3, 366);
             this.panelThongKeCon.MaximumSize = new System.Drawing.Size(217, 174);
             this.panelThongKeCon.MinimumSize = new System.Drawing.Size(217, 110);
             this.panelThongKeCon.Name = "panelThongKeCon";
@@ -793,13 +804,13 @@
             this.btnThongKe.IconVisible = true;
             this.btnThongKe.IconZoom = 90D;
             this.btnThongKe.IsTab = false;
-            this.btnThongKe.Location = new System.Drawing.Point(0, 0);
+            this.btnThongKe.Location = new System.Drawing.Point(0, 3);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Normalcolor = System.Drawing.Color.Chocolate;
             this.btnThongKe.OnHovercolor = System.Drawing.Color.LightSkyBlue;
             this.btnThongKe.OnHoverTextColor = System.Drawing.Color.White;
             this.btnThongKe.selected = false;
-            this.btnThongKe.Size = new System.Drawing.Size(223, 110);
+            this.btnThongKe.Size = new System.Drawing.Size(217, 110);
             this.btnThongKe.TabIndex = 5;
             this.btnThongKe.Text = "THỐNG KÊ";
             this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -849,7 +860,7 @@
             this.panelHangHoaCon.Controls.Add(this.btnTonKho);
             this.panelHangHoaCon.Controls.Add(this.btnNhapKho);
             this.panelHangHoaCon.Controls.Add(this.btnNhaCungCap);
-            this.panelHangHoaCon.Location = new System.Drawing.Point(3, 368);
+            this.panelHangHoaCon.Location = new System.Drawing.Point(3, 246);
             this.panelHangHoaCon.MaximumSize = new System.Drawing.Size(217, 253);
             this.panelHangHoaCon.MinimumSize = new System.Drawing.Size(217, 110);
             this.panelHangHoaCon.Name = "panelHangHoaCon";
@@ -1003,7 +1014,7 @@
             // 
             this.panelLienHeCon.Controls.Add(this.btnLienHeKhachHang);
             this.panelLienHeCon.Controls.Add(this.btnLienHe);
-            this.panelLienHeCon.Location = new System.Drawing.Point(3, 488);
+            this.panelLienHeCon.Location = new System.Drawing.Point(3, 489);
             this.panelLienHeCon.MaximumSize = new System.Drawing.Size(217, 170);
             this.panelLienHeCon.MinimumSize = new System.Drawing.Size(217, 114);
             this.panelLienHeCon.Name = "panelLienHeCon";
@@ -1123,14 +1134,41 @@
             this.panelMain.Size = new System.Drawing.Size(1030, 567);
             this.panelMain.TabIndex = 8;
             // 
-            // label1
+            // btnDichvu
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(998, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 31;
-            this.label1.Text = "label1";
+            this.btnDichvu.Activecolor = System.Drawing.Color.White;
+            this.btnDichvu.BackColor = System.Drawing.Color.White;
+            this.btnDichvu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDichvu.BorderRadius = 0;
+            this.btnDichvu.ButtonText = "DỊCH VỤ";
+            this.btnDichvu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDichvu.DisabledColor = System.Drawing.Color.Gray;
+            this.btnDichvu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDichvu.Iconcolor = System.Drawing.Color.White;
+            this.btnDichvu.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnDichvu.Iconimage")));
+            this.btnDichvu.Iconimage_right = null;
+            this.btnDichvu.Iconimage_right_Selected = null;
+            this.btnDichvu.Iconimage_Selected = null;
+            this.btnDichvu.IconMarginLeft = 20;
+            this.btnDichvu.IconMarginRight = 0;
+            this.btnDichvu.IconRightVisible = true;
+            this.btnDichvu.IconRightZoom = 0D;
+            this.btnDichvu.IconVisible = true;
+            this.btnDichvu.IconZoom = 90D;
+            this.btnDichvu.IsTab = false;
+            this.btnDichvu.Location = new System.Drawing.Point(21, 349);
+            this.btnDichvu.Name = "btnDichvu";
+            this.btnDichvu.Normalcolor = System.Drawing.Color.White;
+            this.btnDichvu.OnHovercolor = System.Drawing.Color.Gold;
+            this.btnDichvu.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnDichvu.selected = false;
+            this.btnDichvu.Size = new System.Drawing.Size(179, 40);
+            this.btnDichvu.TabIndex = 13;
+            this.btnDichvu.Text = "DỊCH VỤ";
+            this.btnDichvu.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDichvu.Textcolor = System.Drawing.Color.Black;
+            this.btnDichvu.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDichvu.Click += new System.EventHandler(this.btnDichvu_Click);
             // 
             // FrmMain
             // 
@@ -1218,5 +1256,6 @@
         private System.Windows.Forms.PictureBox pbzalo;
         private System.Windows.Forms.PictureBox pbfb;
         private System.Windows.Forms.Label label1;
+        private Bunifu.Framework.UI.BunifuFlatButton btnDichvu;
     }
 }

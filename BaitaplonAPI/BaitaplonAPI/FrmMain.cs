@@ -727,7 +727,7 @@ namespace BaitaplonAPI
             btnNhaCungCap.Activecolor = Color.White;
             btnLienHeKhachHang.Activecolor = Color.White;
             
-            phanquyen();
+            //phanquyen();
             label1.Text = user;
             
        
@@ -873,6 +873,10 @@ namespace BaitaplonAPI
             MessageBox.Show("Bạn không được cấp quyền!");
         }
 
-       
+        private void btnDichvu_Click(object sender, EventArgs e)
+        {
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(new FrmDichVu());
+        }
     }
 }

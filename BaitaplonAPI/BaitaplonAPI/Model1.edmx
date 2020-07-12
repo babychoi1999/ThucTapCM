@@ -130,6 +130,7 @@
           <Property Name="MaDV" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="TenDichVu" Type="nvarchar" MaxLength="50" />
           <Property Name="DonGia" Type="float" />
+          <Property Name="Anh" Type="image" />
         </EntityType>
         <EntityType Name="HoaDon">
           <Key>
@@ -1251,6 +1252,7 @@
           <Property Name="MaDV" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="TenDichVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DonGia" Type="Double" />
+          <Property Name="Anh" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="CTDichVus" Relationship="Self.FK_CTDichVu_DichVu" FromRole="DichVu" ToRole="CTDichVu" />
         </EntityType>
         <EntityType Name="HoaDon">
@@ -2360,6 +2362,7 @@
                 <ScalarProperty Name="MaDV" ColumnName="MaDV" />
                 <ScalarProperty Name="TenDichVu" ColumnName="TenDichVu" />
                 <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -46,6 +46,7 @@ namespace BaitaplonAPI
                             img.Image = returnImage;
                         }
                     }
+                    img.Margin = new System.Windows.Forms.Padding(7, 3, 7, 3);
                     img.BorderStyle = BorderStyle.FixedSingle;
                     img.TabIndex = i;
                     img.TabStop = false;
@@ -84,7 +85,10 @@ namespace BaitaplonAPI
                         TextBox tb = new TextBox();
                         tb.BorderStyle = System.Windows.Forms.BorderStyle.None;
                         tb.Size = new System.Drawing.Size(182, 13);
+                        tb.Enabled = false;
+                        tb.BackColor = Color.White;
                         tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                        tb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))); ;
                         tb.Text = ds_thucung[3 * count + j].TenThuCung;
                         panelAnh.Controls.Add(tb);
 
@@ -110,8 +114,7 @@ namespace BaitaplonAPI
         {
             using(quanlithucungEntities1 quanli = new quanlithucungEntities1())
             {
-                List<LoaiThuCung> ds_loai = quanli.LoaiThuCungs.ToList();
-                cbLoaiThuCung.DataSource = ds_loai;
+                cbLoaiThuCung.DataSource  = quanli.LoaiThuCungs.ToList();
                 cbLoaiThuCung.DisplayMember = "TenLoai";
                 cbLoaiThuCung.ValueMember = "MaLoai";
             }
@@ -208,8 +211,11 @@ namespace BaitaplonAPI
         private void Husky_Load(object sender, EventArgs e)
 
         {
+            
+            
             loadLoaiThuCung();
-           // loadHoaDonThuCung();
+            cbLoaiThuCung.SelectedIndex = -1;
+            // loadHoaDonThuCung();
             LoadDanhMuc();
             LoadThuCung("LTC01");
             dgvThuCung.Rows.Clear();
@@ -243,31 +249,37 @@ namespace BaitaplonAPI
             }
 
         }
-
         private void btnthem_Click(object sender, EventArgs e)
         {
             if(txtsoluong.Value == 0)
             {
-                MessageBox.Show("Số lượng không thể là 0");
+                MessageBox.Show("Số lượng thú cưng không thể là 0");
                 return;
+
             }
-            int dongia = int.Parse(txtdongia.Text);
+
+             int dongia= int.Parse(txtdongia.Text);
             int soluong = int.Parse(txtsoluong.Value.ToString());
-            int uudai = int.Parse(txtuudai.Text);
+            int     uudai = int.Parse(txtuudai.Text);
             for (int i = 0; i < dgvThuCung.Rows.Count; i++)
             {
+                
                 string loaithucung = dgvThuCung.Rows[i].Cells["loaithucung"].Value.ToString();
-                string tenthucung = dgvThuCung.Rows[i].Cells["tenthucung"].Value.ToString();
+                string tenthucung = dgvThuCung.Rows[i].Cells["tenthucung"].Value.ToString(); 
                 if (tenthucung == txttenthucung.Text && cbLoaiThuCung.Text == loaithucung)
-                {
+                {             
+  
                     int sl = int.Parse(dgvThuCung.Rows[i].Cells["soluong"].Value.ToString()) + soluong;
                     dgvThuCung.Rows[i].Cells["soluong"].Value = sl;
-                    dgvThuCung.Rows[i].Cells["thanhtien"].Value = sl * dongia ;
+                    dgvThuCung.Rows[i].Cells["thanhtien"].Value = (sl * dongia) - (sl * dongia * uudai/100);
                     return;
                 }
+                    
             }
-            int tongtien = dongia * soluong ;
-            dgvThuCung.Rows.Add(new object[] { matc, txttenthucung.Text, cbLoaiThuCung.Text, txtsoluong.Value.ToString(), txtdongia.Text, tongtien });
+                 int  tongtien = (soluong * dongia) - (soluong * dongia * uudai/100);
+                dgvThuCung.Rows.Add(new object[] { matc, txttenthucung.Text, cbLoaiThuCung.Text,
+                    txtsoluong.Value.ToString(), txtdongia.Text, tongtien });
+            
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -385,6 +397,15 @@ namespace BaitaplonAPI
 
                 }
             }
+        }
+        private void cbDichvu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void panelDanhMuc_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
