@@ -199,6 +199,7 @@ namespace BaitaplonAPI
         {
 
         }
+        string maud = "";
         public void loaduudai()
         {
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
@@ -211,9 +212,11 @@ namespace BaitaplonAPI
                     if (DateTime.Now.Day >= ngaybd.Day && DateTime.Now.Day <= ngaykt.Day && DateTime.Now.Year == ngaybd.Year && DateTime.Now.Month == ngaybd.Month)
                     {
                         txtuudai.Text = item.GiamGia.ToString();
+                        maud = item.MaUD;
                         return;
                     }
                 }
+               
             }
         }
         public void loadhdchuathanhtoan()
@@ -304,6 +307,16 @@ namespace BaitaplonAPI
                     quanli.HoaDons.Add(hd);
                     quanli.SaveChanges();
                 }
+                if (txtuudai.Text != "")
+                {
+                    CTUuDai ud = new CTUuDai();
+                    ud.MaHD = txtmahoadon.Text;
+                    ud.MaUD = maud;
+                    Console.WriteLine(maud);
+                    quanli.CTUuDais.Add(ud);
+                    quanli.SaveChanges();
+                }
+
                 foreach (DataGridViewRow rows in dgvThucPham.Rows)
                 {
                     CTTHUCPHAM ct = new CTTHUCPHAM();
@@ -317,6 +330,7 @@ namespace BaitaplonAPI
                     quanli.CTTHUCPHAMs.Add(ct);
                     quanli.SaveChanges();
                 }
+                
                 MessageBox.Show("Lưu thành công!");
                 loadhdchuathanhtoan();
                 return;
@@ -362,7 +376,7 @@ namespace BaitaplonAPI
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
             {
                 HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == txtmahoadon.Text);
-                    hd.TrangThai = true;
+                     hd.TrangThai = true;
                     quanli.SaveChanges();
                     MessageBox.Show("Thanh toán thành công!");
                 Formbanhthuong_Load(sender, e);
@@ -388,8 +402,8 @@ namespace BaitaplonAPI
                     string maloai = quanli.THUCPHAMs.FirstOrDefault(p => p.Mathucpham == item.Mathucpham).MaLoai.ToString();
                     string loaithucpham = quanli.LoaiThucPhams.FirstOrDefault(p => p.MaLoai == maloai).TenLoai;
                     double dongia = (double)quanli.THUCPHAMs.FirstOrDefault(p => p.Mathucpham == item.Mathucpham).dongia;
-                    double thanhtien = dongia *item.soluong;
-                    
+                    int uudai = int.Parse(txtuudai.Text);
+                    double thanhtien = dongia *item.soluong - (item.soluong * dongia * uudai / 100);
                     dgvThucPham.Rows.Add(item.Mathucpham,item.Tenthucpham,loaithucpham,item.soluong,dongia,thanhtien);
                    
                 }

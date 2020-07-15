@@ -7,13 +7,12 @@
       <Schema Namespace="quanlithucungModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Calamviec">
           <Key>
-            <PropertyRef Name="MaNV" />
-            <PropertyRef Name="NgayLV" />
+            <PropertyRef Name="Maca" />
           </Key>
-          <Property Name="MaNV" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="NgayLV" Type="date" Nullable="false" />
-          <Property Name="ThoiGianBD" Type="time" Precision="7" />
-          <Property Name="ThoiGianKT" Type="time" Precision="7" />
+          <Property Name="Maca" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="TenCa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Thoigianbatdau" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Thoigianketthuc" Type="time" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="ChucVu">
           <Key>
@@ -110,9 +109,10 @@
         <EntityType Name="CTUuDai">
           <Key>
             <PropertyRef Name="MaUD" />
+            <PropertyRef Name="MaHD" />
           </Key>
           <Property Name="MaUD" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="MaHD" Type="nchar" MaxLength="50" />
+          <Property Name="MaHD" Type="nchar" MaxLength="50" Nullable="false" />
           <Property Name="Ghichu" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DangNhap">
@@ -327,18 +327,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Calamviec_NhanVien">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-          <End Role="Calamviec" Type="Self.Calamviec" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNV" />
-            </Principal>
-            <Dependent Role="Calamviec">
-              <PropertyRef Name="MaNV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CTDichVu_DichVu">
           <End Role="DichVu" Type="Self.DichVu" Multiplicity="1" />
           <End Role="CTDichVu" Type="Self.CTDichVu" Multiplicity="*" />
@@ -498,7 +486,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CTUuDai_HoaDon">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
           <End Role="CTUuDai" Type="Self.CTUuDai" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
@@ -680,6 +668,9 @@
         <Function Name="deleHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mahd" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="deletecalam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maca" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="deleteKH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="makh" Type="nvarchar" Mode="In" />
         </Function>
@@ -752,10 +743,16 @@
           </ReturnType>
         </Function>
         <Function Name="hdchuathanhtoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="hddvchuathanhtoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="hdphukienchuathanhtoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="hdthucungchuathanhtoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="HoaDonPhieuNhap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mapn" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="insertcalam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tenca" Type="nvarchar" Mode="In" />
+          <Parameter Name="tgbd" Type="nvarchar" Mode="In" />
+          <Parameter Name="tgkt" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="insertCTPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mapn" Type="nvarchar" Mode="In" />
@@ -904,6 +901,16 @@
           <Parameter Name="maud" Type="nvarchar" Mode="In" />
           <Parameter Name="username" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Tonkho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="thang" Type="int" Mode="In" />
+          <Parameter Name="nam" Type="int" Mode="In" />
+        </Function>
+        <Function Name="updatecalam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="maca" Type="nvarchar" Mode="In" />
+          <Parameter Name="tenca" Type="nvarchar" Mode="In" />
+          <Parameter Name="tgbd" Type="nvarchar" Mode="In" />
+          <Parameter Name="tgkt" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="uudaimoinhat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaUD" Type="nchar" Mode="In" />
         </Function>
@@ -947,10 +954,6 @@
           <AssociationSet Name="FK__CTNhapThuc__MaPN__2BFE89A6" Association="Self.FK__CTNhapThuc__MaPN__2BFE89A6">
             <End Role="PhieuNhap" EntitySet="PhieuNhap" />
             <End Role="CTNhapThucPham" EntitySet="CTNhapThucPham" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Calamviec_NhanVien" Association="Self.FK_Calamviec_NhanVien">
-            <End Role="NhanVien" EntitySet="NhanVien" />
-            <End Role="Calamviec" EntitySet="Calamviec" />
           </AssociationSet>
           <AssociationSet Name="FK_CTDichVu_DichVu" Association="Self.FK_CTDichVu_DichVu">
             <End Role="DichVu" EntitySet="DichVu" />
@@ -1108,14 +1111,12 @@
         </ComplexType>
         <EntityType Name="Calamviec">
           <Key>
-            <PropertyRef Name="MaNV" />
-            <PropertyRef Name="NgayLV" />
+            <PropertyRef Name="Maca" />
           </Key>
-          <Property Name="MaNV" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="NgayLV" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ThoiGianBD" Type="Time" Precision="7" />
-          <Property Name="ThoiGianKT" Type="Time" Precision="7" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK_Calamviec_NhanVien" FromRole="Calamviec" ToRole="NhanVien" />
+          <Property Name="Maca" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TenCa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Thoigianbatdau" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Thoigianketthuc" Type="Time" Nullable="false" Precision="7" />
         </EntityType>
         <EntityType Name="ChucVu">
           <Key>
@@ -1229,9 +1230,10 @@
         <EntityType Name="CTUuDai">
           <Key>
             <PropertyRef Name="MaUD" />
+            <PropertyRef Name="MaHD" />
           </Key>
           <Property Name="MaUD" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="MaHD" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="MaHD" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Ghichu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HoaDon" Relationship="Self.FK_CTUuDai_HoaDon" FromRole="CTUuDai" ToRole="HoaDon" />
         </EntityType>
@@ -1345,7 +1347,6 @@
           <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaCV" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="sodienthoai" Type="Int32" />
-          <NavigationProperty Name="Calamviecs" Relationship="Self.FK_Calamviec_NhanVien" FromRole="NhanVien" ToRole="Calamviec" />
           <NavigationProperty Name="ChucVu" Relationship="Self.FK_NhanVien_ChucVu" FromRole="NhanVien" ToRole="ChucVu" />
           <NavigationProperty Name="DangNhaps" Relationship="Self.FK_DangNhap_NhanVien" FromRole="NhanVien" ToRole="DangNhap" />
           <NavigationProperty Name="LuongTungThangs" Relationship="Self.FK_LuongTungThang_NhanVien" FromRole="NhanVien" ToRole="LuongTungThang" />
@@ -1452,18 +1453,6 @@
           <Property Name="ghichu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="HoaDons" Relationship="Self.FK_HoaDon_UuDaiHD" FromRole="UuDaiHD" ToRole="HoaDon" />
         </EntityType>
-        <Association Name="FK_Calamviec_NhanVien">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-          <End Role="Calamviec" Type="Self.Calamviec" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNV" />
-            </Principal>
-            <Dependent Role="Calamviec">
-              <PropertyRef Name="MaNV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_NhanVien_ChucVu">
           <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1685,7 +1674,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CTUuDai_HoaDon">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
           <End Role="CTUuDai" Type="Self.CTUuDai" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
@@ -1867,10 +1856,6 @@
           <EntitySet Name="ThuCungs" EntityType="Self.ThuCung" />
           <EntitySet Name="ThuongPhats" EntityType="Self.ThuongPhat" />
           <EntitySet Name="UuDaiHDs" EntityType="Self.UuDaiHD" />
-          <AssociationSet Name="FK_Calamviec_NhanVien" Association="Self.FK_Calamviec_NhanVien">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="Calamviec" EntitySet="Calamviecs" />
-          </AssociationSet>
           <AssociationSet Name="FK_NhanVien_ChucVu" Association="Self.FK_NhanVien_ChucVu">
             <End Role="ChucVu" EntitySet="ChucVus" />
             <End Role="NhanVien" EntitySet="NhanViens" />
@@ -2006,6 +1991,9 @@
           <FunctionImport Name="deleHD">
             <Parameter Name="mahd" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="deletecalam">
+            <Parameter Name="maca" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="deleteKH">
             <Parameter Name="makh" Mode="In" Type="String" />
           </FunctionImport>
@@ -2026,10 +2014,16 @@
             <Parameter Name="nam" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="hdchuathanhtoan" ReturnType="Collection(quanlithucungModel.hdchuathanhtoan_Result)" />
+          <FunctionImport Name="hddvchuathanhtoan" ReturnType="Collection(quanlithucungModel.hddvchuathanhtoan_Result)" />
           <FunctionImport Name="hdphukienchuathanhtoan" ReturnType="Collection(quanlithucungModel.hdphukienchuathanhtoan_Result)" />
           <FunctionImport Name="hdthucungchuathanhtoan" ReturnType="Collection(quanlithucungModel.hdthucungchuathanhtoan_Result)" />
           <FunctionImport Name="HoaDonPhieuNhap" ReturnType="Collection(quanlithucungModel.HoaDonPhieuNhap_Result)">
             <Parameter Name="mapn" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insertcalam">
+            <Parameter Name="tenca" Mode="In" Type="String" />
+            <Parameter Name="tgbd" Mode="In" Type="String" />
+            <Parameter Name="tgkt" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="insertCTPK">
             <Parameter Name="mapn" Mode="In" Type="String" />
@@ -2143,6 +2137,16 @@
             <Parameter Name="maud" Mode="In" Type="String" />
             <Parameter Name="username" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Tonkho" ReturnType="Collection(quanlithucungModel.Tonkho_Result)">
+            <Parameter Name="thang" Mode="In" Type="Int32" />
+            <Parameter Name="nam" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="updatecalam">
+            <Parameter Name="maca" Mode="In" Type="String" />
+            <Parameter Name="tenca" Mode="In" Type="String" />
+            <Parameter Name="tgbd" Mode="In" Type="String" />
+            <Parameter Name="tgkt" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="uudaimoinhat" ReturnType="Collection(quanlithucungModel.uudaimoinhat_Result)">
             <Parameter Name="MaUD" Mode="In" Type="String" />
           </FunctionImport>
@@ -2155,6 +2159,15 @@
           <Property Type="Int32" Name="doanhthu" Nullable="true" />
         </ComplexType>
         <ComplexType Name="hdchuathanhtoan_Result">
+          <Property Type="String" Name="MaHD" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="ThoiGianLap" Nullable="true" />
+          <Property Type="String" Name="MaKH" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="TongTien" Nullable="true" />
+          <Property Type="String" Name="MaUD" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="TrangThai" Nullable="true" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="hddvchuathanhtoan_Result">
           <Property Type="String" Name="MaHD" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="ThoiGianLap" Nullable="true" />
           <Property Type="String" Name="MaKH" Nullable="true" MaxLength="50" />
@@ -2221,6 +2234,14 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="Tonkho_Result">
+          <Property Type="String" Name="MaHang" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TenHang" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SlNhap" Nullable="true" />
+          <Property Type="Int32" Name="SLBan" Nullable="true" />
+          <Property Type="Int32" Name="TonKho" Nullable="true" />
+          <Property Type="DateTime" Name="NgayLap" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="uudaimoinhat_Result">
           <Property Type="String" Name="MaUD" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="TenUD" Nullable="true" MaxLength="50" />
@@ -2238,10 +2259,10 @@
           <EntitySetMapping Name="Calamviecs">
             <EntityTypeMapping TypeName="quanlithucungModel.Calamviec">
               <MappingFragment StoreEntitySet="Calamviec">
-                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
-                <ScalarProperty Name="NgayLV" ColumnName="NgayLV" />
-                <ScalarProperty Name="ThoiGianBD" ColumnName="ThoiGianBD" />
-                <ScalarProperty Name="ThoiGianKT" ColumnName="ThoiGianKT" />
+                <ScalarProperty Name="Maca" ColumnName="Maca" />
+                <ScalarProperty Name="TenCa" ColumnName="TenCa" />
+                <ScalarProperty Name="Thoigianbatdau" ColumnName="Thoigianbatdau" />
+                <ScalarProperty Name="Thoigianketthuc" ColumnName="Thoigianketthuc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2609,6 +2630,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="deleHD" FunctionName="quanlithucungModel.Store.deleHD" />
+          <FunctionImportMapping FunctionImportName="deletecalam" FunctionName="quanlithucungModel.Store.deletecalam" />
           <FunctionImportMapping FunctionImportName="deleteKH" FunctionName="quanlithucungModel.Store.deleteKH" />
           <FunctionImportMapping FunctionImportName="deleteNCC" FunctionName="quanlithucungModel.Store.deleteNCC" />
           <FunctionImportMapping FunctionImportName="deleteNhanVien" FunctionName="quanlithucungModel.Store.deleteNhanVien" />
@@ -2628,6 +2650,19 @@
           <FunctionImportMapping FunctionImportName="hdchuathanhtoan" FunctionName="quanlithucungModel.Store.hdchuathanhtoan">
             <ResultMapping>
               <ComplexTypeMapping TypeName="quanlithucungModel.hdchuathanhtoan_Result">
+                <ScalarProperty Name="MaHD" ColumnName="MaHD" />
+                <ScalarProperty Name="ThoiGianLap" ColumnName="ThoiGianLap" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+                <ScalarProperty Name="MaUD" ColumnName="MaUD" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="hddvchuathanhtoan" FunctionName="quanlithucungModel.Store.hddvchuathanhtoan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="quanlithucungModel.hddvchuathanhtoan_Result">
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="ThoiGianLap" ColumnName="ThoiGianLap" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
@@ -2679,6 +2714,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insertcalam" FunctionName="quanlithucungModel.Store.insertcalam" />
           <FunctionImportMapping FunctionImportName="insertCTPK" FunctionName="quanlithucungModel.Store.insertCTPK" />
           <FunctionImportMapping FunctionImportName="insertCTPN" FunctionName="quanlithucungModel.Store.insertCTPN" />
           <FunctionImportMapping FunctionImportName="insertCTTP" FunctionName="quanlithucungModel.Store.insertCTTP" />
@@ -2740,6 +2776,19 @@
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="quanlithucungModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="quanlithucungModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="themHD" FunctionName="quanlithucungModel.Store.themHD" />
+          <FunctionImportMapping FunctionImportName="Tonkho" FunctionName="quanlithucungModel.Store.Tonkho">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="quanlithucungModel.Tonkho_Result">
+                <ScalarProperty Name="MaHang" ColumnName="MaHang" />
+                <ScalarProperty Name="TenHang" ColumnName="TenHang" />
+                <ScalarProperty Name="SlNhap" ColumnName="SlNhap" />
+                <ScalarProperty Name="SLBan" ColumnName="SLBan" />
+                <ScalarProperty Name="TonKho" ColumnName="TonKho" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="updatecalam" FunctionName="quanlithucungModel.Store.updatecalam" />
           <FunctionImportMapping FunctionImportName="uudaimoinhat" FunctionName="quanlithucungModel.Store.uudaimoinhat">
             <ResultMapping>
               <ComplexTypeMapping TypeName="quanlithucungModel.uudaimoinhat_Result">

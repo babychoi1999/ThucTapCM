@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BaitaplonAPI.DataSet1TableAdapters;
 
 namespace BaitaplonAPI
 {
@@ -18,15 +17,27 @@ namespace BaitaplonAPI
             InitializeComponent();
         }
 
-        private void UserControl1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnXem_Click(object sender, EventArgs e)
+        private void btnxem_Click(object sender, EventArgs e)
         {
 
-            dgvTonKho.DataSource = new quanlithucungEntities1().HangTonKho(dateTK.Value.Month, dateTK.Value.Year).ToList();
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                DataTable table = new DataTable();
+                table.Columns.Add("mahang");
+                table.Columns.Add("tenhang");
+                table.Columns.Add("slnhap");
+                table.Columns.Add("slban");
+                table.Columns.Add("tonkho");
+                table.Columns.Add("ngaylap");
+
+                List<Tonkho_Result> ds_hoadon = quanli.Tonkho(dtpthang.Value.Month, dtpthang.Value.Year).ToList();
+                foreach (var item in ds_hoadon)
+                {
+                    table.Rows.Add(item.MaHang, item.TenHang, item.SlNhap, item.SLBan, item.TonKho, item.NgayLap);
+                }
+                bunifuCustomDataGrid1.DataSource = table;
+
+            }
         }
     }
-}
+}   

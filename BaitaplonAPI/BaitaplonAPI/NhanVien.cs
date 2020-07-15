@@ -17,7 +17,6 @@ namespace BaitaplonAPI
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NhanVien()
         {
-            this.Calamviecs = new HashSet<Calamviec>();
             this.DangNhaps = new HashSet<DangNhap>();
             this.LuongTungThangs = new HashSet<LuongTungThang>();
             this.PhieuNhaps = new HashSet<PhieuNhap>();
@@ -31,8 +30,6 @@ namespace BaitaplonAPI
         public string MaCV { get; set; }
         public Nullable<int> sodienthoai { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Calamviec> Calamviecs { get; set; }
         public virtual ChucVu ChucVu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DangNhap> DangNhaps { get; set; }

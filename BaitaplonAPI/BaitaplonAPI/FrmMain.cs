@@ -766,18 +766,12 @@ namespace BaitaplonAPI
         public string password;
         private void btnQuanLy_Click(object sender, EventArgs e)
         {
-            if (!admin)
-            {
-                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
-                return;
-            }
-            else
-            {
+            
                 FrmQuanly quanly = new FrmQuanly();
                 quanly.user = user;
                 panelMain.Controls.Clear();
                 panelMain.Controls.Add(quanly);
-            }
+            
            
         }
 

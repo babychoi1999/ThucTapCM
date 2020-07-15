@@ -185,6 +185,7 @@ namespace BaitaplonAPI
                 LoadThuCung("LTC07");
             }
         }
+        string maud = "";
         private void loaduudai()
         {
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
@@ -197,6 +198,7 @@ namespace BaitaplonAPI
                     if (DateTime.Now.Day >= ngaybd.Day && DateTime.Now.Day <= ngaykt.Day && DateTime.Now.Year == ngaybd.Year && DateTime.Now.Month == ngaybd.Month)
                     {
                         txtuudai.Text = item.GiamGia.ToString();
+                        maud = item.MaUD;
                         return;
                     }
                 }
@@ -218,6 +220,7 @@ namespace BaitaplonAPI
             // loadHoaDonThuCung();
             LoadDanhMuc();
             LoadThuCung("LTC01");
+            loaduudai();
             dgvThuCung.Rows.Clear();
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
             {
@@ -329,6 +332,18 @@ namespace BaitaplonAPI
                     hd.ThoiGianLap = DateTime.Now.Date;
                     hd.TrangThai = false;
                     quanli.HoaDons.Add(hd);
+                    quanli.SaveChanges();
+                }
+
+
+                if (txtuudai.Text != "")
+                {
+
+                    CTUuDai ud = new CTUuDai();
+                    ud.MaHD = txtmahoadon.Text;
+                    ud.MaUD = maud;
+                    Console.WriteLine(maud);
+                    quanli.CTUuDais.Add(ud);
                     quanli.SaveChanges();
                 }
                 foreach (DataGridViewRow rows in dgvThuCung.Rows)

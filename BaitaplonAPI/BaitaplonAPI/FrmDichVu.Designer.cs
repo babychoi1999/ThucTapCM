@@ -31,20 +31,27 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDichVu));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDichVu));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbHoaDon = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvDichvu = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.madichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tendichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dongia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thanhtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.cbchuathanhtoan = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txttendichvu = new System.Windows.Forms.TextBox();
             this.txtsoluong = new System.Windows.Forms.NumericUpDown();
             this.btnthanhtoan = new System.Windows.Forms.Button();
             this.btnluu = new System.Windows.Forms.Button();
             this.btnthem = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dgvDichvu = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.label5 = new System.Windows.Forms.Label();
             this.txtuudai = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,17 +60,10 @@
             this.txtdongia = new System.Windows.Forms.TextBox();
             this.panelAnh = new System.Windows.Forms.FlowLayoutPanel();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
-            this.cbHoaDon = new System.Windows.Forms.ComboBox();
-            this.madichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tendichvu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dongia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thanhtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtsoluong)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDichvu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtsoluong)).BeginInit();
             this.panelAnh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             this.SuspendLayout();
@@ -94,6 +94,142 @@
             this.panel1.Size = new System.Drawing.Size(386, 527);
             this.panel1.TabIndex = 30;
             // 
+            // cbHoaDon
+            // 
+            this.cbHoaDon.FormattingEnabled = true;
+            this.cbHoaDon.Location = new System.Drawing.Point(88, 14);
+            this.cbHoaDon.Name = "cbHoaDon";
+            this.cbHoaDon.Size = new System.Drawing.Size(110, 21);
+            this.cbHoaDon.TabIndex = 79;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(6, 18);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 15);
+            this.label6.TabIndex = 70;
+            this.label6.Text = "Mã hóa đơn:";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvDichvu);
+            this.panel2.Location = new System.Drawing.Point(3, 189);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(377, 276);
+            this.panel2.TabIndex = 61;
+            // 
+            // dgvDichvu
+            // 
+            this.dgvDichvu.AllowUserToAddRows = false;
+            this.dgvDichvu.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvDichvu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDichvu.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDichvu.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDichvu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDichvu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvDichvu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDichvu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.madichvu,
+            this.tendichvu,
+            this.soluong,
+            this.dongia,
+            this.thanhtien,
+            this.xoa});
+            this.dgvDichvu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDichvu.DoubleBuffered = true;
+            this.dgvDichvu.EnableHeadersVisualStyles = false;
+            this.dgvDichvu.GridColor = System.Drawing.Color.Black;
+            this.dgvDichvu.HeaderBgColor = System.Drawing.Color.Teal;
+            this.dgvDichvu.HeaderForeColor = System.Drawing.Color.White;
+            this.dgvDichvu.Location = new System.Drawing.Point(0, 0);
+            this.dgvDichvu.Name = "dgvDichvu";
+            this.dgvDichvu.ReadOnly = true;
+            this.dgvDichvu.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDichvu.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvDichvu.RowHeadersWidth = 51;
+            this.dgvDichvu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvDichvu.RowTemplate.Height = 30;
+            this.dgvDichvu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDichvu.ShowCellErrors = false;
+            this.dgvDichvu.ShowRowErrors = false;
+            this.dgvDichvu.Size = new System.Drawing.Size(377, 276);
+            this.dgvDichvu.TabIndex = 61;
+            // 
+            // madichvu
+            // 
+            this.madichvu.DataPropertyName = "MaDV";
+            this.madichvu.HeaderText = "Mã dịch vụ";
+            this.madichvu.Name = "madichvu";
+            this.madichvu.ReadOnly = true;
+            this.madichvu.Visible = false;
+            // 
+            // tendichvu
+            // 
+            this.tendichvu.DataPropertyName = "TenDichVu";
+            this.tendichvu.HeaderText = "Tên dịch vụ";
+            this.tendichvu.Name = "tendichvu";
+            this.tendichvu.ReadOnly = true;
+            this.tendichvu.Width = 64;
+            // 
+            // soluong
+            // 
+            this.soluong.DataPropertyName = "SoDV";
+            this.soluong.HeaderText = "Số lượng";
+            this.soluong.Name = "soluong";
+            this.soluong.ReadOnly = true;
+            this.soluong.Width = 64;
+            // 
+            // dongia
+            // 
+            this.dongia.DataPropertyName = "DonGia";
+            this.dongia.HeaderText = "Đơn giá";
+            this.dongia.Name = "dongia";
+            this.dongia.ReadOnly = true;
+            this.dongia.Width = 63;
+            // 
+            // thanhtien
+            // 
+            this.thanhtien.DataPropertyName = "thanhtien";
+            this.thanhtien.HeaderText = "Thành tiền";
+            this.thanhtien.Name = "thanhtien";
+            this.thanhtien.ReadOnly = true;
+            this.thanhtien.Width = 64;
+            // 
+            // xoa
+            // 
+            this.xoa.DataPropertyName = "xoa";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.NullValue = "Xóa";
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.xoa.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xoa.HeaderText = "Xóa";
+            this.xoa.Name = "xoa";
+            this.xoa.ReadOnly = true;
+            this.xoa.Text = "Xóa";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -115,18 +251,7 @@
             this.cbchuathanhtoan.Size = new System.Drawing.Size(110, 21);
             this.cbchuathanhtoan.TabIndex = 77;
             this.cbchuathanhtoan.ValueMember = "MaHD";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(6, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 15);
-            this.label6.TabIndex = 70;
-            this.label6.Text = "Mã hóa đơn:";
+            this.cbchuathanhtoan.SelectedIndexChanged += new System.EventHandler(this.cbchuathanhtoan_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -191,66 +316,6 @@
             this.btnthem.Text = "Thêm";
             this.btnthem.UseVisualStyleBackColor = false;
             this.btnthem.Click += new System.EventHandler(this.btnthem_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dgvDichvu);
-            this.panel2.Location = new System.Drawing.Point(3, 189);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(377, 276);
-            this.panel2.TabIndex = 61;
-            // 
-            // dgvDichvu
-            // 
-            this.dgvDichvu.AllowUserToAddRows = false;
-            this.dgvDichvu.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvDichvu.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvDichvu.BackgroundColor = System.Drawing.Color.White;
-            this.dgvDichvu.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvDichvu.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Navy;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDichvu.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDichvu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDichvu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.madichvu,
-            this.tendichvu,
-            this.soluong,
-            this.dongia,
-            this.thanhtien,
-            this.xoa});
-            this.dgvDichvu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDichvu.DoubleBuffered = true;
-            this.dgvDichvu.EnableHeadersVisualStyles = false;
-            this.dgvDichvu.GridColor = System.Drawing.Color.Black;
-            this.dgvDichvu.HeaderBgColor = System.Drawing.Color.Teal;
-            this.dgvDichvu.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvDichvu.Location = new System.Drawing.Point(0, 0);
-            this.dgvDichvu.Name = "dgvDichvu";
-            this.dgvDichvu.ReadOnly = true;
-            this.dgvDichvu.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGreen;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDichvu.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDichvu.RowHeadersWidth = 51;
-            this.dgvDichvu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvDichvu.RowTemplate.Height = 30;
-            this.dgvDichvu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDichvu.ShowCellErrors = false;
-            this.dgvDichvu.ShowRowErrors = false;
-            this.dgvDichvu.Size = new System.Drawing.Size(377, 276);
-            this.dgvDichvu.TabIndex = 61;
             // 
             // label5
             // 
@@ -338,70 +403,6 @@
             this.bunifuImageButton1.TabStop = false;
             this.bunifuImageButton1.Zoom = 10;
             // 
-            // cbHoaDon
-            // 
-            this.cbHoaDon.FormattingEnabled = true;
-            this.cbHoaDon.Location = new System.Drawing.Point(88, 14);
-            this.cbHoaDon.Name = "cbHoaDon";
-            this.cbHoaDon.Size = new System.Drawing.Size(110, 21);
-            this.cbHoaDon.TabIndex = 79;
-            // 
-            // madichvu
-            // 
-            this.madichvu.DataPropertyName = "MaDV";
-            this.madichvu.HeaderText = "Mã dịch vụ";
-            this.madichvu.Name = "madichvu";
-            this.madichvu.ReadOnly = true;
-            this.madichvu.Visible = false;
-            // 
-            // tendichvu
-            // 
-            this.tendichvu.DataPropertyName = "TenDichVu";
-            this.tendichvu.HeaderText = "Tên dịch vụ";
-            this.tendichvu.Name = "tendichvu";
-            this.tendichvu.ReadOnly = true;
-            this.tendichvu.Width = 64;
-            // 
-            // soluong
-            // 
-            this.soluong.DataPropertyName = "SoDV";
-            this.soluong.HeaderText = "Số lượng";
-            this.soluong.Name = "soluong";
-            this.soluong.ReadOnly = true;
-            this.soluong.Width = 64;
-            // 
-            // dongia
-            // 
-            this.dongia.DataPropertyName = "DonGia";
-            this.dongia.HeaderText = "Đơn giá";
-            this.dongia.Name = "dongia";
-            this.dongia.ReadOnly = true;
-            this.dongia.Width = 63;
-            // 
-            // thanhtien
-            // 
-            this.thanhtien.DataPropertyName = "thanhtien";
-            this.thanhtien.HeaderText = "Thành tiền";
-            this.thanhtien.Name = "thanhtien";
-            this.thanhtien.ReadOnly = true;
-            this.thanhtien.Width = 64;
-            // 
-            // xoa
-            // 
-            this.xoa.DataPropertyName = "xoa";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.NullValue = "Xóa";
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.xoa.DefaultCellStyle = dataGridViewCellStyle3;
-            this.xoa.HeaderText = "Xóa";
-            this.xoa.Name = "xoa";
-            this.xoa.ReadOnly = true;
-            this.xoa.Text = "Xóa";
-            // 
             // FrmDichVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,9 +414,9 @@
             this.Load += new System.EventHandler(this.FrmDichVu_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtsoluong)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDichvu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtsoluong)).EndInit();
             this.panelAnh.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             this.ResumeLayout(false);

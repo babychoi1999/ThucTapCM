@@ -182,12 +182,17 @@ namespace BaitaplonAPI
         {
 
             luu.Enabled = false;
-            
+            loadcalam();
             loaduudai();
             loadchucvu();
             loadtaikhoan();
             loadcbnhanvien();
+            btn_luu.Enabled = false;
+            btnxoa.Enabled = false;
         }
+
+        
+
         List<dstaikhoan_Result> ds_nhanvien = new List<dstaikhoan_Result>();
         private void loadcbnhanvien()
         {
@@ -534,6 +539,163 @@ namespace BaitaplonAPI
                 quanli.SaveChanges();
                 MessageBox.Show("Lưu thành công!");
                 FrmQuanly_Load(sender, e);
+            }
+        }
+        private void loadcalam()
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                List<Calamviec> ca = quanli.Calamviecs.ToList();
+                DataTable dt = new DataTable();
+                dt.Columns.Add("tenca");
+                dt.Columns.Add("maca");
+                dt.Columns.Add("thoigianbd");
+                dt.Columns.Add("thoigiankt");
+                foreach (var item in ca)
+                {
+                    dt.Rows.Add(item.TenCa, item.Maca, item.Thoigianbatdau, item.Thoigianketthuc);
+                }
+                dgvca.DataSource = dt;
+                
+
+                
+            }
+        }
+        public bool ktthoigian(string thoigian)
+        {
+            string[] time = thoigian.Split(':');
+            int gio = int.Parse(time[0]);
+            int phut = int.Parse(time[1]);
+            if (gio >= 24 || phut >= 60)
+            {
+                return false;
+            }
+            return true;
+        }
+        private void themcalam_Click(object sender, EventArgs e)
+        {
+            string tgbd = mtxtbd.Text.Trim();
+            string tgktcl = mtxtkt.Text.Trim();
+            if (string.IsNullOrEmpty(txttenca.Text))
+            {
+                MessageBox.Show("Bạn cần nhập tên ca làm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txttenca.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(tgbd))
+            {
+                MessageBox.Show("Bạn cần nhập thời gian bắt đầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtxtbd.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(tgktcl))
+            {
+                MessageBox.Show("Bạn cần nhập thời gian kết thúc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtxtkt.Focus();
+                return;
+            }
+            if (!ktthoigian(mtxtbd.Text))
+            {
+                MessageBox.Show("Kiểu dữ liệu thời gian bắt đầu không đúng (00:00 - 23:59)!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtxtbd.Focus();
+                return;
+            }
+            if (!ktthoigian(mtxtkt.Text))
+            {
+                MessageBox.Show("Kiểu dữ liệu thời gian kết thúc không đúng (00:00 - 23:59)!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtxtkt.Focus();
+                return;
+               
+            }
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                Calamviec ca = quanli.Calamviecs.FirstOrDefault(p => p.TenCa == txttenca.Text);
+                if (ca != null)
+                {
+                    MessageBox.Show("Đã có ca làm này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                quanli.insertcalam(txttenca.Text, mtxtbd.Text, mtxtkt.Text);
+                MessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FrmQuanly_Load(sender, e);
+            }
+        }
+        string macalam = "";
+        private void btn_luu_Click(object sender, EventArgs e)
+        {
+       
+            if (string.IsNullOrEmpty(txttenca.Text))
+            {
+                MessageBox.Show("Bạn cần nhập tên ca làm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txttenca.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(mtxtbd.Text))
+            {
+                MessageBox.Show("Bạn cần nhập thời gian bắt đầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtxtbd.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(mtxtkt.Text))
+            {
+                MessageBox.Show("Bạn cần nhập thời gian kết thúc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtxtkt.Focus();
+                return;
+            }
+            if (!ktthoigian(mtxtbd.Text))
+            {
+                MessageBox.Show("Kiểu dữ liệu thời gian bắt đầu không đúng (00:00 - 23:59)!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtxtbd.Focus();
+                return;
+            }
+            if (!ktthoigian(mtxtkt.Text))
+            {
+                MessageBox.Show("Kiểu dữ liệu thời gian kết thúc không đúng (00:00 - 23:59)!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mtxtkt.Focus();
+                return;
+
+            }
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+
+            {
+                
+                quanli.updatecalam(macalam,txttenca.Text,mtxtbd.Text,mtxtkt.Text);
+                quanli.SaveChanges();
+                MessageBox.Show("Lưu thành công!");
+                FrmQuanly_Load(sender, e);
+            }
+        }
+
+        private void dgvca_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = e.RowIndex;
+            btn_luu.Enabled = true;
+            btnxoa.Enabled = true;
+            if (r >= 0)
+            {
+                macalam = dgvca.Rows[r].Cells["maca"].Value.ToString();
+                txttenca.Text = dgvca.Rows[r].Cells["tenca"].Value.ToString();
+                mtxtbd.Text = dgvca.Rows[r].Cells["thoigianbd"].Value.ToString();
+                mtxtkt.Text = dgvca.Rows[r].Cells["thoigiankt"].Value.ToString();
+            }
+        }
+
+        private void btnxoa_Click(object sender, EventArgs e)
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                if (macalam == "")
+                {
+                    MessageBox.Show("Yêu cầu chọn ca làm cần xóa");
+                    return;
+                }
+
+                if (MessageBox.Show("Bạn có muốn xóa ca làm này hay không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    quanli.deletecalam(macalam);
+                    MessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    FrmQuanly_Load(sender, e);
+                }
             }
         }
     }

@@ -125,6 +125,15 @@ namespace BaitaplonAPI
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("deleHD", mahdParameter);
         }
     
+        public virtual int deletecalam(string maca)
+        {
+            var macaParameter = maca != null ?
+                new ObjectParameter("maca", maca) :
+                new ObjectParameter("maca", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("deletecalam", macaParameter);
+        }
+    
         public virtual int deleteKH(string makh)
         {
             var makhParameter = makh != null ?
@@ -188,6 +197,11 @@ namespace BaitaplonAPI
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<hdchuathanhtoan_Result>("hdchuathanhtoan");
         }
     
+        public virtual ObjectResult<hddvchuathanhtoan_Result> hddvchuathanhtoan()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<hddvchuathanhtoan_Result>("hddvchuathanhtoan");
+        }
+    
         public virtual ObjectResult<hdphukienchuathanhtoan_Result> hdphukienchuathanhtoan()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<hdphukienchuathanhtoan_Result>("hdphukienchuathanhtoan");
@@ -205,6 +219,23 @@ namespace BaitaplonAPI
                 new ObjectParameter("mapn", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<HoaDonPhieuNhap_Result>("HoaDonPhieuNhap", mapnParameter);
+        }
+    
+        public virtual int insertcalam(string tenca, string tgbd, string tgkt)
+        {
+            var tencaParameter = tenca != null ?
+                new ObjectParameter("tenca", tenca) :
+                new ObjectParameter("tenca", typeof(string));
+    
+            var tgbdParameter = tgbd != null ?
+                new ObjectParameter("tgbd", tgbd) :
+                new ObjectParameter("tgbd", typeof(string));
+    
+            var tgktParameter = tgkt != null ?
+                new ObjectParameter("tgkt", tgkt) :
+                new ObjectParameter("tgkt", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertcalam", tencaParameter, tgbdParameter, tgktParameter);
         }
     
         public virtual int insertCTPK(string mapn, Nullable<int> soluong, Nullable<double> gianhap, string tenphukien, string maloai, byte[] anh, string donvi)
@@ -601,6 +632,40 @@ namespace BaitaplonAPI
                 new ObjectParameter("username", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("themHD", makhParameter, maudParameter, usernameParameter);
+        }
+    
+        public virtual ObjectResult<Tonkho_Result> Tonkho(Nullable<int> thang, Nullable<int> nam)
+        {
+            var thangParameter = thang.HasValue ?
+                new ObjectParameter("thang", thang) :
+                new ObjectParameter("thang", typeof(int));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("nam", nam) :
+                new ObjectParameter("nam", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Tonkho_Result>("Tonkho", thangParameter, namParameter);
+        }
+    
+        public virtual int updatecalam(string maca, string tenca, string tgbd, string tgkt)
+        {
+            var macaParameter = maca != null ?
+                new ObjectParameter("maca", maca) :
+                new ObjectParameter("maca", typeof(string));
+    
+            var tencaParameter = tenca != null ?
+                new ObjectParameter("tenca", tenca) :
+                new ObjectParameter("tenca", typeof(string));
+    
+            var tgbdParameter = tgbd != null ?
+                new ObjectParameter("tgbd", tgbd) :
+                new ObjectParameter("tgbd", typeof(string));
+    
+            var tgktParameter = tgkt != null ?
+                new ObjectParameter("tgkt", tgkt) :
+                new ObjectParameter("tgkt", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updatecalam", macaParameter, tencaParameter, tgbdParameter, tgktParameter);
         }
     
         public virtual ObjectResult<uudaimoinhat_Result> uudaimoinhat(string maUD)

@@ -17,7 +17,8 @@ namespace BaitaplonAPI
         public FrmDichVu()
         {
             InitializeComponent();
-        }    
+        }
+        string user;
         private void loaddichvu()
         {
             panelAnh.Controls.Clear();
@@ -125,9 +126,20 @@ namespace BaitaplonAPI
                     if (DateTime.Now.Day >= ngaybd.Day && DateTime.Now.Day <= ngaykt.Day && DateTime.Now.Year == ngaybd.Year && DateTime.Now.Month == ngaybd.Month)
                     {
                         txtuudai.Text = item.GiamGia.ToString();
+                        maud = item.MaUD;
                         return;
                     }
                 }
+            }
+        }
+        private void loadhdchuathanhtoan()
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                List<hddvchuathanhtoan_Result> hd = quanli.hddvchuathanhtoan().ToList();
+                cbchuathanhtoan.DataSource = hd;
+                cbchuathanhtoan.DisplayMember = "MaHD";
+                cbchuathanhtoan.ValueMember = "MaHD";
             }
         }
         private void FrmDichVu_Load(object sender, EventArgs e)
@@ -136,10 +148,30 @@ namespace BaitaplonAPI
             loaduudai();
             loadhoadon();
             cbHoaDon.SelectedIndex = -1;
+            dgvDichvu.Rows.Clear();
+            txtuudai.Enabled = false;
+            loadhdchuathanhtoan();
         }
-
+        string[] a = { "001", "002", "003", "004" };
+        private bool kiemtraHD()
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+               
+                if (cbHoaDon.Text.StartsWith("HD"))  
+                    {
+                        return true;
+                    }
+                return false;
+            }
+        }
         private void btnthem_Click(object sender, EventArgs e)
         {
+            if (!kiemtraHD())
+            {
+                MessageBox.Show("Mã hóa đơn chưa đúng định dạng : HD...");
+                return;
+            }
             if (txtsoluong.Value == 0)
             {
                 MessageBox.Show("Số lượng không thể là 0");
@@ -164,7 +196,7 @@ namespace BaitaplonAPI
             int tongtien = (soluong * dongia) - (soluong * dongia * uudai / 100);
             dgvDichvu.Rows.Add(new object[] { madv, txttendichvu.Text, txtsoluong.Value.ToString(), txtdongia.Text, tongtien });
         }
-
+        string maud = "";
         private void btnluu_Click(object sender, EventArgs e)
         {
 
@@ -176,17 +208,43 @@ namespace BaitaplonAPI
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
             {
                 HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == cbHoaDon.Text);
-                hd.TrangThai = false;
-                foreach (DataGridView rows in dgvDichvu.Rows)
+                if (hd==null)
                 {
+                    hd = new HoaDon();
+                    hd.MaHD = cbHoaDon.Text;
+                    hd.UserName = null;
+                    hd.ThoiGianLap = DateTime.Now.Date;
+                    hd.TrangThai = false;
+                    quanli.HoaDons.Add(hd);
+                    quanli.SaveChanges();
+                }
+                else 
+                {
+                    hd.TrangThai = false;
+                }
+                if (txtuudai.Text != "")
+                {
+                    CTUuDai ud = new CTUuDai();
+                    ud.MaHD = cbHoaDon.Text;
+                    ud.MaUD = maud;
+                    Console.WriteLine(maud);
+                    quanli.CTUuDais.Add(ud);
+                    quanli.SaveChanges();
+                }
+                foreach (DataGridViewRow rows in dgvDichvu.Rows)
+                {
+                    string madichvu = rows.Cells["madichvu"].Value.ToString();
+                    
+                    int sl = int.Parse(rows.Cells["soluong"].Value.ToString());
                     CTDichVu ct = new CTDichVu();
                     ct.MaHD = cbHoaDon.Text;
-                    ct.MaDV = madv;
-                    ct.SoDV = int.Parse(txtsoluong.Value.ToString());
+                    ct.MaDV = madichvu;
+                    ct.SoDV = sl;
                     quanli.CTDichVus.Add(ct);
                     quanli.SaveChanges();
                 }
                 MessageBox.Show("Lưu thành công!");
+                loadhdchuathanhtoan();
                 return;
             }
         }
@@ -208,6 +266,25 @@ namespace BaitaplonAPI
                 FrmDichVu_Load(sender, e);
                 cbchuathanhtoan.Text = null;
                 return;
+            }
+        }
+
+        private void cbchuathanhtoan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgvDichvu.Rows.Clear();
+           cbHoaDon.Text = cbchuathanhtoan.Text;
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                List<CTDichVu> ds_dv = quanli.CTDichVus.Where(p => p.MaHD == cbHoaDon.Text).ToList();
+                foreach (var item in ds_dv)
+                {
+                    string tendichvu = quanli.DichVus.FirstOrDefault(p => p.MaDV == item.MaDV).TenDichVu;
+                    double dongia = (double)quanli.DichVus.FirstOrDefault(p => p.MaDV == item.MaDV).DonGia;
+                    int uudai = int.Parse(txtuudai.Text);
+                    double thanhtien = Convert.ToDouble((dongia * item.SoDV) - (item.SoDV * dongia * uudai / 100));
+                    dgvDichvu.Rows.Add(item.MaDV, tendichvu, item.SoDV, dongia, thanhtien);
+
+                }
             }
         }
     }

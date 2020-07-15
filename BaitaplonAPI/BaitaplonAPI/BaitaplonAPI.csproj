@@ -185,6 +185,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet4.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet5.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DichVu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -330,6 +335,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="hdchuathanhtoan_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="hddvchuathanhtoan_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="hdphukienchuathanhtoan_Result.cs">
@@ -674,6 +682,14 @@
       <DependentUpon>TonKho.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Tonkhothucung.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tonkhothucung.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Tonkho_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -885,6 +901,17 @@
     </None>
     <None Include="DataSet4.xss">
       <DependentUpon>DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet5.xsc">
+      <DependentUpon>DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet5.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet5.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet5.xss">
+      <DependentUpon>DataSet5.xsd</DependentUpon>
     </None>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -1353,6 +1380,17 @@
     </None>
     <None Include="RPHoaDon.xss">
       <DependentUpon>RPHoaDon.xsd</DependentUpon>
+    </None>
+    <None Include="Tonkhothucung.xsc">
+      <DependentUpon>Tonkhothucung.xsd</DependentUpon>
+    </None>
+    <None Include="Tonkhothucung.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Tonkhothucung.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Tonkhothucung.xss">
+      <DependentUpon>Tonkhothucung.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

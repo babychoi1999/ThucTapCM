@@ -317,7 +317,7 @@ namespace BaitaplonAPI
             // 
             // btnthoat
             // 
-            this.btnthoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnthoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnthoat.ImageOptions.Image")));
             this.btnthoat.Location = new System.Drawing.Point(383, 280);
             this.btnthoat.Name = "btnthoat";
             this.btnthoat.Size = new System.Drawing.Size(75, 30);
@@ -350,7 +350,7 @@ namespace BaitaplonAPI
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvPhieuNhap);
             this.Name = "FrmCTPhieuNhap";
-            this.Text = "fmChiTietPN";
+            this.Text = resources.GetString("$this.Text");
             this.Load += new System.EventHandler(this.fmChiTietPN_Load);
             ((System.ComponentModel.ISupportInitialize)(this.hinhanh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhaCungCapBindingSource)).EndInit();

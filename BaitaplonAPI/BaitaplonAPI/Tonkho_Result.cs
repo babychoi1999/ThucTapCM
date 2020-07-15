@@ -10,13 +10,14 @@
 namespace BaitaplonAPI
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Calamviec
+    public partial class Tonkho_Result
     {
-        public string Maca { get; set; }
-        public string TenCa { get; set; }
-        public System.TimeSpan Thoigianbatdau { get; set; }
-        public System.TimeSpan Thoigianketthuc { get; set; }
+        public string MaHang { get; set; }
+        public string TenHang { get; set; }
+        public Nullable<int> SlNhap { get; set; }
+        public Nullable<int> SLBan { get; set; }
+        public Nullable<int> TonKho { get; set; }
+        public Nullable<System.DateTime> NgayLap { get; set; }
     }
 }
