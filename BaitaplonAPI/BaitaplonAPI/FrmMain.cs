@@ -56,7 +56,7 @@ namespace BaitaplonAPI
 
         private void bunifuFlatButton6_Click(object sender, EventArgs e)
         {
-            if (!banhang || !admin)
+            if (!banhang)
             {
                 MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
                 return;
@@ -323,6 +323,7 @@ namespace BaitaplonAPI
             else
             {
                 FrmPhieuNhap phieuNhap = new FrmPhieuNhap();
+                phieuNhap.user = user;
                 phieuNhap.Show();
             }    
         }
@@ -726,6 +727,7 @@ namespace BaitaplonAPI
             btnNhapKho.Activecolor = Color.White;
             btnNhaCungCap.Activecolor = Color.White;
             btnLienHeKhachHang.Activecolor = Color.White;
+            label1.Visible = true;
             
             //phanquyen();
             label1.Text = user;
@@ -871,6 +873,39 @@ namespace BaitaplonAPI
         {
             panelMain.Controls.Clear();
             panelMain.Controls.Add(new FrmDichVu());
+        }
+
+        private void bunifuFlatButton1_Click_1(object sender, EventArgs e)
+        {
+            //report phieu nhap
+            if (!thongke)
+            {
+
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                panelMain.Controls.Clear();
+                panelMain.Controls.Add(new ReportPhieuNhap());
+                
+            }
+        }
+
+        private void bunifuFlatButton4_Click(object sender, EventArgs e)
+        {
+            //report hoadon
+            if (!thongke)
+            {
+
+                MessageBox.Show("Xin lỗi, bạn không được cấp quyền");
+                return;
+            }
+            else
+            {
+                ReportHoaDon rp = new ReportHoaDon();
+                rp.Show();
+            }
         }
     }
 }

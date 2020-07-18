@@ -29,6 +29,7 @@ namespace BaitaplonAPI
         public string DiaChi { get; set; }
         public string MaCV { get; set; }
         public Nullable<int> sodienthoai { get; set; }
+        public string Gmail { get; set; }
     
         public virtual ChucVu ChucVu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

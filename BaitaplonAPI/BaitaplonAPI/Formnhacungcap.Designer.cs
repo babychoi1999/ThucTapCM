@@ -30,10 +30,17 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Formnhacungcap));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvNhacc = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.mancc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenncc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sdt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSua = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnthem = new Bunifu.Framework.UI.BunifuThinButton2();
             this.txtsdt = new System.Windows.Forms.TextBox();
             this.txtdiachi = new System.Windows.Forms.TextBox();
@@ -42,12 +49,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSua = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.mancc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenncc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sdt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhacc)).BeginInit();
             this.panel2.SuspendLayout();
@@ -69,7 +70,7 @@
             this.dgvNhacc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvNhacc.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Navy;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -86,7 +87,7 @@
             this.dgvNhacc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNhacc.DoubleBuffered = true;
             this.dgvNhacc.EnableHeadersVisualStyles = false;
-            this.dgvNhacc.HeaderBgColor = System.Drawing.Color.Teal;
+            this.dgvNhacc.HeaderBgColor = System.Drawing.Color.Navy;
             this.dgvNhacc.HeaderForeColor = System.Drawing.Color.White;
             this.dgvNhacc.Location = new System.Drawing.Point(0, 0);
             this.dgvNhacc.Name = "dgvNhacc";
@@ -94,6 +95,49 @@
             this.dgvNhacc.Size = new System.Drawing.Size(568, 426);
             this.dgvNhacc.TabIndex = 1;
             this.dgvNhacc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentClick);
+            // 
+            // mancc
+            // 
+            this.mancc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mancc.DataPropertyName = "mancc";
+            this.mancc.HeaderText = "Mã nhà cung cấp";
+            this.mancc.Name = "mancc";
+            // 
+            // tenncc
+            // 
+            this.tenncc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tenncc.DataPropertyName = "tenncc";
+            this.tenncc.HeaderText = "Tên nhà cung cấp";
+            this.tenncc.Name = "tenncc";
+            // 
+            // diachi
+            // 
+            this.diachi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.diachi.DataPropertyName = "diachi";
+            this.diachi.HeaderText = "Địa chỉ";
+            this.diachi.Name = "diachi";
+            // 
+            // sdt
+            // 
+            this.sdt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sdt.DataPropertyName = "sdt";
+            this.sdt.HeaderText = "Số điện thoại";
+            this.sdt.Name = "sdt";
+            // 
+            // xoa
+            // 
+            this.xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.xoa.DataPropertyName = "xoa";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Navy;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.NullValue = "Xóa";
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.xoa.DefaultCellStyle = dataGridViewCellStyle3;
+            this.xoa.HeaderText = "Xóa";
+            this.xoa.Name = "xoa";
             // 
             // panel2
             // 
@@ -111,6 +155,32 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(336, 351);
             this.panel2.TabIndex = 2;
+            // 
+            // btnSua
+            // 
+            this.btnSua.ActiveBorderThickness = 1;
+            this.btnSua.ActiveCornerRadius = 20;
+            this.btnSua.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnSua.ActiveForecolor = System.Drawing.Color.White;
+            this.btnSua.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnSua.BackColor = System.Drawing.Color.White;
+            this.btnSua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSua.BackgroundImage")));
+            this.btnSua.ButtonText = "Sửa";
+            this.btnSua.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSua.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.ForeColor = System.Drawing.Color.Black;
+            this.btnSua.IdleBorderThickness = 1;
+            this.btnSua.IdleCornerRadius = 20;
+            this.btnSua.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnSua.IdleForecolor = System.Drawing.Color.Black;
+            this.btnSua.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnSua.Location = new System.Drawing.Point(178, 216);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(126, 41);
+            this.btnSua.TabIndex = 11;
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnthem
             // 
@@ -195,75 +265,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "THÔNG TIN NHÀ CUNG CẤP";
             // 
-            // btnSua
-            // 
-            this.btnSua.ActiveBorderThickness = 1;
-            this.btnSua.ActiveCornerRadius = 20;
-            this.btnSua.ActiveFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnSua.ActiveForecolor = System.Drawing.Color.White;
-            this.btnSua.ActiveLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnSua.BackColor = System.Drawing.Color.White;
-            this.btnSua.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSua.BackgroundImage")));
-            this.btnSua.ButtonText = "Sửa";
-            this.btnSua.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSua.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.ForeColor = System.Drawing.Color.Black;
-            this.btnSua.IdleBorderThickness = 1;
-            this.btnSua.IdleCornerRadius = 20;
-            this.btnSua.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnSua.IdleForecolor = System.Drawing.Color.Black;
-            this.btnSua.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnSua.Location = new System.Drawing.Point(178, 216);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(5);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(126, 41);
-            this.btnSua.TabIndex = 11;
-            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // mancc
-            // 
-            this.mancc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.mancc.DataPropertyName = "mancc";
-            this.mancc.HeaderText = "Mã nhà cung cấp";
-            this.mancc.Name = "mancc";
-            // 
-            // tenncc
-            // 
-            this.tenncc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tenncc.DataPropertyName = "tenncc";
-            this.tenncc.HeaderText = "Tên nhà cung cấp";
-            this.tenncc.Name = "tenncc";
-            // 
-            // diachi
-            // 
-            this.diachi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.diachi.DataPropertyName = "diachi";
-            this.diachi.HeaderText = "Địa chỉ";
-            this.diachi.Name = "diachi";
-            // 
-            // sdt
-            // 
-            this.sdt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sdt.DataPropertyName = "sdt";
-            this.sdt.HeaderText = "Số điện thoại";
-            this.sdt.Name = "sdt";
-            // 
-            // xoa
-            // 
-            this.xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.xoa.DataPropertyName = "xoa";
-            this.xoa.HeaderText = "Xóa";
-            this.xoa.Name = "xoa";
-            // 
             // Formnhacungcap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Formnhacungcap";
-            this.Size = new System.Drawing.Size(1000, 537);
+            this.Size = new System.Drawing.Size(998, 535);
             this.Load += new System.EventHandler(this.Formnhacungcap_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhacc)).EndInit();

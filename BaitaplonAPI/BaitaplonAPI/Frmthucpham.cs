@@ -304,6 +304,7 @@ namespace BaitaplonAPI
                     hd.UserName = "ngoctuan";
                     hd.ThoiGianLap = DateTime.Now.Date;
                     hd.TrangThai = false;
+                    hd.MaUD = maud;
                     quanli.HoaDons.Add(hd);
                     quanli.SaveChanges();
                 }

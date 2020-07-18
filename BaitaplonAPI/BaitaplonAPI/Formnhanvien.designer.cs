@@ -148,7 +148,7 @@
             this.dgvLuong.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLuong.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Navy;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -163,7 +163,7 @@
             this.thuongphat});
             this.dgvLuong.DoubleBuffered = true;
             this.dgvLuong.EnableHeadersVisualStyles = false;
-            this.dgvLuong.HeaderBgColor = System.Drawing.Color.Teal;
+            this.dgvLuong.HeaderBgColor = System.Drawing.Color.Navy;
             this.dgvLuong.HeaderForeColor = System.Drawing.Color.White;
             this.dgvLuong.Location = new System.Drawing.Point(64, 103);
             this.dgvLuong.Name = "dgvLuong";

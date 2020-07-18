@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btndangky = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.btnquenmk = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
             this.btnDangNhap = new DevExpress.XtraEditors.SimpleButton();
             this.cbshowmk = new System.Windows.Forms.CheckBox();
@@ -45,6 +47,8 @@
             // 
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.btndangky);
+            this.panel1.Controls.Add(this.btnquenmk);
             this.panel1.Controls.Add(this.btnThoat);
             this.panel1.Controls.Add(this.btnDangNhap);
             this.panel1.Controls.Add(this.cbshowmk);
@@ -58,6 +62,58 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(769, 450);
             this.panel1.TabIndex = 0;
+            // 
+            // btndangky
+            // 
+            this.btndangky.ActiveBorderThickness = 1;
+            this.btndangky.ActiveCornerRadius = 20;
+            this.btndangky.ActiveFillColor = System.Drawing.Color.LightSkyBlue;
+            this.btndangky.ActiveForecolor = System.Drawing.Color.White;
+            this.btndangky.ActiveLineColor = System.Drawing.Color.White;
+            this.btndangky.BackColor = System.Drawing.SystemColors.Control;
+            this.btndangky.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btndangky.BackgroundImage")));
+            this.btndangky.ButtonText = "Đăng ký";
+            this.btndangky.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btndangky.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndangky.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btndangky.IdleBorderThickness = 1;
+            this.btndangky.IdleCornerRadius = 20;
+            this.btndangky.IdleFillColor = System.Drawing.SystemColors.Control;
+            this.btndangky.IdleForecolor = System.Drawing.Color.DarkCyan;
+            this.btndangky.IdleLineColor = System.Drawing.SystemColors.Control;
+            this.btndangky.Location = new System.Drawing.Point(184, 254);
+            this.btndangky.Margin = new System.Windows.Forms.Padding(5);
+            this.btndangky.Name = "btndangky";
+            this.btndangky.Size = new System.Drawing.Size(158, 24);
+            this.btndangky.TabIndex = 19;
+            this.btndangky.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btndangky.Click += new System.EventHandler(this.btndangky_Click);
+            // 
+            // btnquenmk
+            // 
+            this.btnquenmk.ActiveBorderThickness = 1;
+            this.btnquenmk.ActiveCornerRadius = 20;
+            this.btnquenmk.ActiveFillColor = System.Drawing.Color.LightSkyBlue;
+            this.btnquenmk.ActiveForecolor = System.Drawing.Color.White;
+            this.btnquenmk.ActiveLineColor = System.Drawing.Color.White;
+            this.btnquenmk.BackColor = System.Drawing.SystemColors.Control;
+            this.btnquenmk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnquenmk.BackgroundImage")));
+            this.btnquenmk.ButtonText = "Quên mật khẩu";
+            this.btnquenmk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnquenmk.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnquenmk.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnquenmk.IdleBorderThickness = 1;
+            this.btnquenmk.IdleCornerRadius = 20;
+            this.btnquenmk.IdleFillColor = System.Drawing.SystemColors.Control;
+            this.btnquenmk.IdleForecolor = System.Drawing.Color.DarkCyan;
+            this.btnquenmk.IdleLineColor = System.Drawing.SystemColors.Control;
+            this.btnquenmk.Location = new System.Drawing.Point(431, 254);
+            this.btnquenmk.Margin = new System.Windows.Forms.Padding(5);
+            this.btnquenmk.Name = "btnquenmk";
+            this.btnquenmk.Size = new System.Drawing.Size(158, 24);
+            this.btnquenmk.TabIndex = 18;
+            this.btnquenmk.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnquenmk.Click += new System.EventHandler(this.btnquenmk_Click);
             // 
             // btnThoat
             // 
@@ -91,7 +147,7 @@
             this.cbshowmk.AutoSize = true;
             this.cbshowmk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbshowmk.ForeColor = System.Drawing.Color.DarkCyan;
-            this.cbshowmk.Location = new System.Drawing.Point(309, 252);
+            this.cbshowmk.Location = new System.Drawing.Point(302, 222);
             this.cbshowmk.Name = "cbshowmk";
             this.cbshowmk.Size = new System.Drawing.Size(161, 24);
             this.cbshowmk.TabIndex = 15;
@@ -179,6 +235,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnquenmk;
+        private Bunifu.Framework.UI.BunifuThinButton2 btndangky;
     }
 }
 

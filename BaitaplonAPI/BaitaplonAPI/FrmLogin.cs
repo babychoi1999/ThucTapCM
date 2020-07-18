@@ -8,6 +8,8 @@ using System.Text;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
+using System.Net;
 
 namespace BaitaplonAPI
 {
@@ -184,6 +186,60 @@ namespace BaitaplonAPI
                     }
                 }
             }
+        }
+        string maxacminh = "";
+        string manv = "";
+        private void btnquenmk_Click(object sender, EventArgs e)
+        {
+            if(txtTenDangNhap.Text == "")
+            {
+                MessageBox.Show("Bạn chưa nhập tên tài khoản");
+                return;
+            }
+            
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                DangNhap dang = quanli.DangNhaps.FirstOrDefault(p=>p.UserName == txtTenDangNhap.Text);
+                if (dang == null)
+                {
+                    MessageBox.Show("Xin lỗi tài khoản của bạn không chính xác, vui lòng kiểm tra lại");
+                    return;
+                }
+                manv = quanli.DangNhaps.FirstOrDefault(p => p.UserName == txtTenDangNhap.Text).MaNV;
+                NhanVien nv = quanli.NhanViens.FirstOrDefault(p => p.MaNV == manv);
+                DangNhap dn = quanli.DangNhaps.FirstOrDefault(p => p.MaNV == manv);
+                maxacminh = dn.PassWord.Remove(6, 26);
+                string bodyemail = "Xin chào " + nv.TenNV + " Mã xác minh của bạn là: " + dn.PassWord.Remove(6, 26);
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("babychoi1999@gmail.com");
+                mail.To.Add(nv.Gmail);
+                mail.Subject = " PETSHOP TNT - SĐT: 012323324 - 20 DUBAI";
+                mail.Body = bodyemail;
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Host = "smtp.gmail.com";
+                System.Net.NetworkCredential credential = new NetworkCredential();
+                credential.UserName = "babychoi1999@gmail.com";
+                credential.Password = "babychoi";
+                smtpClient.Credentials = credential;
+                smtpClient.Port = 587;
+                smtpClient.EnableSsl = true;
+                smtpClient.Send(mail);
+                if(MessageBox.Show("Đã gửi mã xác minh về Email\nMời Kiểm Tra Để Đổi Mật Khẩu", "Thông báo", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    FrmLayMK mk = new FrmLayMK();
+                    mk.maxm = maxacminh;
+                    mk.manv = manv;
+                    mk.Show();
+                    
+                }
+
+            }
+        }
+
+        private void btndangky_Click(object sender, EventArgs e)
+        {
+            FrmDangKyTK dk = new FrmDangKyTK();
+            dk.Show();
         }
     }
 }

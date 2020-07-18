@@ -190,6 +190,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet5.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet6.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DichVu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -220,6 +225,18 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDangKyTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDangKyTK.Designer.cs">
+      <DependentUpon>FrmDangKyTK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formaddhinhdichvu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +260,12 @@
     </Compile>
     <Compile Include="FrmDichVu.Designer.cs">
       <DependentUpon>FrmDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLayMK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLayMK.Designer.cs">
+      <DependentUpon>FrmLayMK.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -620,8 +643,20 @@
     <Compile Include="reportHD_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportHoaDon.Designer.cs">
+      <DependentUpon>ReportHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="reportHoaDon_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportPhieuNhap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ReportPhieuNhap.Designer.cs">
+      <DependentUpon>ReportPhieuNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="reportPhieuNhap_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -655,6 +690,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="tctonkho_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ThongTinHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -673,7 +711,13 @@
     <Compile Include="ThuCung.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="thucungtonkho_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ThuongPhat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="timkiemHD_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="TonKho.cs">
@@ -726,6 +770,12 @@
     <EmbeddedResource Include="Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDangKyTK.resx">
+      <DependentUpon>FrmDangKyTK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formaddhinhdichvu.resx">
       <DependentUpon>Formaddhinhdichvu.cs</DependentUpon>
     </EmbeddedResource>
@@ -737,6 +787,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDichVu.resx">
       <DependentUpon>FrmDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLayMK.resx">
+      <DependentUpon>FrmLayMK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -800,6 +853,12 @@
     </Compile>
     <EmbeddedResource Include="FrmThuCUng.resx">
       <DependentUpon>FrmThuCUng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportHoaDon.resx">
+      <DependentUpon>ReportHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportPhieuNhap.resx">
+      <DependentUpon>ReportPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RPDoanhThu.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -912,6 +971,17 @@
     </None>
     <None Include="DataSet5.xss">
       <DependentUpon>DataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet6.xsc">
+      <DependentUpon>DataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet6.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet6.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet6.xss">
+      <DependentUpon>DataSet6.xsd</DependentUpon>
     </None>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

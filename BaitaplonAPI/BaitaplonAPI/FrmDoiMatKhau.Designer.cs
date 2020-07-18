@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDoiMatKhau));
             this.label1 = new System.Windows.Forms.Label();
             this.txtmkcu = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Navy;
             this.label1.Location = new System.Drawing.Point(63, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 13);
@@ -59,6 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Navy;
             this.label2.Location = new System.Drawing.Point(63, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 13);
@@ -86,6 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Navy;
             this.label3.Location = new System.Drawing.Point(63, 155);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 13);
@@ -107,6 +111,7 @@
             // btnluu
             // 
             this.btnluu.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnluu.ForeColor = System.Drawing.Color.White;
             this.btnluu.Location = new System.Drawing.Point(89, 189);
             this.btnluu.Name = "btnluu";
             this.btnluu.Size = new System.Drawing.Size(75, 23);
@@ -118,6 +123,7 @@
             // btntrove
             // 
             this.btntrove.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btntrove.ForeColor = System.Drawing.Color.White;
             this.btntrove.Location = new System.Drawing.Point(230, 189);
             this.btntrove.Name = "btntrove";
             this.btntrove.Size = new System.Drawing.Size(75, 23);
@@ -130,6 +136,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(372, 241);
             this.Controls.Add(this.btntrove);
             this.Controls.Add(this.btnluu);

@@ -150,6 +150,7 @@ namespace BaitaplonAPI
             cbHoaDon.SelectedIndex = -1;
             dgvDichvu.Rows.Clear();
             txtuudai.Enabled = false;
+          
             loadhdchuathanhtoan();
         }
         string[] a = { "001", "002", "003", "004" };

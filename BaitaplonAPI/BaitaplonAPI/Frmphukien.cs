@@ -182,6 +182,10 @@ namespace BaitaplonAPI
                         maud = item.MaUD;
                         return;
                     }
+                    else
+                    {
+                        maud = null;
+                    }
                 }
             }
         }
@@ -205,8 +209,19 @@ namespace BaitaplonAPI
                 cbchuathanhtoan.ValueMember = "MaHD";
             }
         }
+        private void loadkh()
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                List<KhachHang> kh = quanli.KhachHangs.ToList();
+                cbkh.DataSource = kh;
+                cbkh.DisplayMember = "MaKH";
+                cbkh.ValueMember = "MaKH";
+            }
+        }
         private void Formbalo_Load(object sender, EventArgs e)
         {
+            loadkh();
             loadloaiphukien();
             LoadDanhMuc();
             LoadPhuKien("LPK01");
@@ -264,58 +279,70 @@ namespace BaitaplonAPI
             {
                 return;
             }
-            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            try
             {
-                HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == txtmahoadon.Text);
-                if (hd != null)
+                using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
                 {
-                    List<CTPHUKIEN> ds_ctpk = quanli.CTPHUKIENs.Where(p => p.MaHD == txtmahoadon.Text).ToList();
-                    foreach (var item in ds_ctpk)
+                    HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == txtmahoadon.Text);
+                    if (hd != null)
                     {
-                        quanli.CTPHUKIENs.Remove(item);
+                        List<CTPHUKIEN> ds_ctpk = quanli.CTPHUKIENs.Where(p => p.MaHD == txtmahoadon.Text).ToList();
+                        foreach (var item in ds_ctpk)
+                        {
+                            quanli.CTPHUKIENs.Remove(item);
+                            quanli.SaveChanges();
+                        }
+
+
+                    }
+                    else
+                    {
+
+                        hd = new HoaDon();
+                        hd.MaHD = txtmahoadon.Text;
+                        hd.UserName = "ngoctuan";
+                        hd.ThoiGianLap = DateTime.Now.Date;
+                        hd.TrangThai = false;
+                        hd.MaKH = cbkh.SelectedValue.ToString();
+                        hd.MaUD = maud;
+                        quanli.HoaDons.Add(hd);
+                        quanli.SaveChanges();
+
+                    }
+                    if (txtuudai.Text != "0")
+                    {
+                        CTUuDai ud = new CTUuDai();
+                        ud.MaHD = txtmahoadon.Text;
+                        ud.MaUD = maud;
+                        Console.WriteLine(maud);
+                        quanli.CTUuDais.Add(ud);
                         quanli.SaveChanges();
                     }
-               
-                    
+                    foreach (DataGridViewRow rows in dgvPhuKien.Rows)
+                    {
+                        CTPHUKIEN ct = new CTPHUKIEN();
+                        string mapk = rows.Cells["maphukien"].Value.ToString();
+                        string tenphukien = rows.Cells["tenphukien"].Value.ToString();
+                        int sl = int.Parse(rows.Cells["soluong"].Value.ToString());
+                        ct.MaHD = txtmahoadon.Text;
+                        ct.Maphukien = mapk;
+                        ct.Tenphukien = tenphukien;
+                        ct.soluong = sl;
+                        quanli.CTPHUKIENs.Add(ct);
+                        quanli.SaveChanges();
+                    }
+                    MessageBox.Show("Lưu thành công!");
+                    loadhdchuathanhtoan();
+                    return;
                 }
-                else
-                {
+            }
+            catch (Exception)
+            {
 
-                    hd = new HoaDon();
-                    hd.MaHD = txtmahoadon.Text;
-                    hd.UserName = "ngoctuan";
-                    hd.ThoiGianLap = DateTime.Now.Date;
-                    hd.TrangThai = false;
-                    quanli.HoaDons.Add(hd);
-                    quanli.SaveChanges();
-                   
-                }
-                if (txtuudai.Text != "")
-                {
-                    CTUuDai ud = new CTUuDai();
-                    ud.MaHD = txtmahoadon.Text;
-                    ud.MaUD = maud;
-                    Console.WriteLine(maud);
-                    quanli.CTUuDais.Add(ud);
-                    quanli.SaveChanges();
-                }
-                foreach (DataGridViewRow rows in dgvPhuKien.Rows)
-                {
-                    CTPHUKIEN ct = new CTPHUKIEN();
-                    string mapk = rows.Cells["maphukien"].Value.ToString();
-                    string tenphukien = rows.Cells["tenphukien"].Value.ToString();
-                    int sl = int.Parse(rows.Cells["soluong"].Value.ToString());
-                    ct.MaHD = txtmahoadon.Text;
-                    ct.Maphukien = mapk;
-                    ct.Tenphukien = tenphukien;
-                    ct.soluong = sl;
-                    quanli.CTPHUKIENs.Add(ct);
-                    quanli.SaveChanges();
-                }
-                MessageBox.Show("Lưu thành công!");
-                loadhdchuathanhtoan();
+                MessageBox.Show("Không thể lưu thông tin vì lý do nào đó. Vui lòng kiểm tra lại");
                 return;
             }
+            
         }
 
         private void btnthanhtoan_Click(object sender, EventArgs e)

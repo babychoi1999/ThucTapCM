@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6871643e0f214ac983a867ac0f47693a" Name="Diagram1">
+      <Diagram DiagramId="cc9a12959139410db0b02c2328f96ef1" Name="Diagram1">
         <EntityTypeShape EntityType="quanlithucungModel.Calamviec" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="quanlithucungModel.ChucVu" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="quanlithucungModel.CTDichVu" Width="1.5" PointX="9.75" PointY="13.625" IsExpanded="true" />
@@ -24,7 +24,7 @@
         <EntityTypeShape EntityType="quanlithucungModel.LoaiThuCung" Width="1.5" PointX="5.25" PointY="30.625" IsExpanded="true" />
         <EntityTypeShape EntityType="quanlithucungModel.LuongTungThang" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
         <EntityTypeShape EntityType="quanlithucungModel.NhaCungCap" Width="1.5" PointX="3" PointY="25.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="quanlithucungModel.NhanVien" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="quanlithucungModel.NhanVien" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="quanlithucungModel.phanquyen" Width="1.5" PointX="3" PointY="22.25" IsExpanded="true" />
         <EntityTypeShape EntityType="quanlithucungModel.PhieuNhap" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
         <EntityTypeShape EntityType="quanlithucungModel.PHUKIEN" Width="1.5" PointX="7.5" PointY="27.125" IsExpanded="true" />

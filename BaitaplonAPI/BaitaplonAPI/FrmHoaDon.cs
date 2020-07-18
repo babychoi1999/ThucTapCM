@@ -99,19 +99,7 @@ namespace BaitaplonAPI
 
         private void dgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 8)
-            {
-                if (MessageBox.Show("bạn có muốn xóa hoa dơn này không?", "xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
-                    {
-                        string mahd = dgvHoaDon.CurrentRow.Cells[0].Value.ToString();
-                        quanli.deleHD(mahd);
-                        MessageBox.Show("đã xóa");
-                        FrmHoaDon_Load(sender, e);
-                    }
-                }
-            }
+            
         }
         String img = "";
         private void btnsuaHD_Click(object sender, EventArgs e)
@@ -321,18 +309,98 @@ namespace BaitaplonAPI
         {
             xuatPDF(dgvHoaDon, "Danh sach Hoa Don");
         }
-
-        private void btnBackup_Click(object sender, EventArgs e)
+        string mahoadon = "";
+        private void btntimkiem_Click(object sender, EventArgs e)
         {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                
+            }
+        }
 
-            SqlConnection connect;
-            string con = @"data source=DESKTOP-QEN4LJI\SQLEXPRESS;initial catalog=quanlithucung";
-            connect = new SqlConnection(con);
-            SqlCommand command;
-            command = new SqlCommand(@"Backup database qlthucung to disk ='c:\BackUp.bak'", connect);
-            connect.Open();
-            command.ExecuteNonQuery();
-            connect.Close();
+        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                mahoadon = dgvHoaDon.CurrentRow.Cells[0].Value.ToString();
+               
+                
+                
+                using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+                {
+                    
+                    HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == mahoadon);
+                    if (hd.MaUD != null)
+                    {
+                        cbmaud.Text = dgvHoaDon.CurrentRow.Cells[4].Value.ToString();
+                    }
+                    if(hd.TongTien != null)
+                    {
+                        txttongtien.Text = dgvHoaDon.CurrentRow.Cells[3].Value.ToString();
+                    }
+                    if(hd.MaKH != null)
+                    {
+                        cbkhachhang.Text = dgvHoaDon.CurrentRow.Cells[2].Value.ToString();
+                    }
+                    if(cbuser.Text != null)
+                    {
+                        cbuser.Text = dgvHoaDon.CurrentRow.Cells[6].Value.ToString();
+                    }
+                    else
+                    {
+                        cbmaud.Text = "";
+                        txttongtien.Text = "0";
+                        cbkhachhang.Text = "";
+                        cbuser.Text = "";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Đã có lỗi xảy ra! Vui lòng kiểm tra lại");
+                return;
+            }
+         
+            
+            
+        }
+
+        private void txttimkiem_TextChanged(object sender, EventArgs e)
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                if(txttimkiem.Text.Trim()=="" || txttimkiem.Text.Trim() == null)
+                {
+                    dgvHoaDon.DataSource = quanli.HoaDons.ToList();
+                }else if(txttimkiem.Text.Trim() != "")
+                {
+                    dgvHoaDon.AutoGenerateColumns = false;
+                    dgvHoaDon.DataSource = quanli.timkiemHD(txttimkiem.Text);
+                    
+                }
+            }
+        }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                try
+                {
+         
+                    quanli.updateHoadon(mahoadon,cbkhachhang.SelectedValue.ToString(), int.Parse(txttongtien.Text), cbmaud.SelectedValue.ToString(), cbuser.Text);
+                    quanli.SaveChanges();
+                    MessageBox.Show("Sửa thành công!");
+                    FrmHoaDon_Load(sender, e);
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Không thể sửa, vui lòng kiểm tra lại!");
+                    return;
+                }
+                
+            }
         }
     }
 }

@@ -33,6 +33,8 @@
             this.btnXem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.RPDoanhThu2 = new BaitaplonAPI.RPDoanhThu();
+            this.RPDoanhThu3 = new BaitaplonAPI.RPDoanhThu();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,6 +46,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(82, 20);
             this.dateTimePicker1.TabIndex = 0;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // btnXem
             // 
@@ -71,7 +74,7 @@
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.RPDoanhThu1;
+            this.crystalReportViewer1.ReportSource = this.RPDoanhThu3;
             this.crystalReportViewer1.Size = new System.Drawing.Size(795, 346);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
@@ -98,5 +101,7 @@
         private System.Windows.Forms.Button btnXem;
         private System.Windows.Forms.Panel panel1;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private RPDoanhThu RPDoanhThu2;
+        private RPDoanhThu RPDoanhThu3;
     }
 }

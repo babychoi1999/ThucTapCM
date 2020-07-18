@@ -116,6 +116,24 @@ namespace BaitaplonAPI
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<reportPhieuNhap_Result>("[quanlithucungEntities1].[reportPhieuNhap](@mapn)", mapnParameter);
         }
     
+        [DbFunction("quanlithucungEntities1", "thucungtonkho")]
+        public virtual IQueryable<thucungtonkho_Result> thucungtonkho(Nullable<int> thang, Nullable<int> nam, string mathucung)
+        {
+            var thangParameter = thang.HasValue ?
+                new ObjectParameter("thang", thang) :
+                new ObjectParameter("thang", typeof(int));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("nam", nam) :
+                new ObjectParameter("nam", typeof(int));
+    
+            var mathucungParameter = mathucung != null ?
+                new ObjectParameter("mathucung", mathucung) :
+                new ObjectParameter("mathucung", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<thucungtonkho_Result>("[quanlithucungEntities1].[thucungtonkho](@thang, @nam, @mathucung)", thangParameter, namParameter, mathucungParameter);
+        }
+    
         public virtual int deleHD(string mahd)
         {
             var mahdParameter = mahd != null ?
@@ -617,6 +635,23 @@ namespace BaitaplonAPI
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
+        public virtual ObjectResult<tctonkho_Result> tctonkho(Nullable<int> thang, Nullable<int> nam, string mathucung)
+        {
+            var thangParameter = thang.HasValue ?
+                new ObjectParameter("thang", thang) :
+                new ObjectParameter("thang", typeof(int));
+    
+            var namParameter = nam.HasValue ?
+                new ObjectParameter("nam", nam) :
+                new ObjectParameter("nam", typeof(int));
+    
+            var mathucungParameter = mathucung != null ?
+                new ObjectParameter("mathucung", mathucung) :
+                new ObjectParameter("mathucung", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<tctonkho_Result>("tctonkho", thangParameter, namParameter, mathucungParameter);
+        }
+    
         public virtual int themHD(string makh, string maud, string username)
         {
             var makhParameter = makh != null ?
@@ -632,6 +667,15 @@ namespace BaitaplonAPI
                 new ObjectParameter("username", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("themHD", makhParameter, maudParameter, usernameParameter);
+        }
+    
+        public virtual ObjectResult<timkiemHD_Result> timkiemHD(string tk)
+        {
+            var tkParameter = tk != null ?
+                new ObjectParameter("tk", tk) :
+                new ObjectParameter("tk", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<timkiemHD_Result>("timkiemHD", tkParameter);
         }
     
         public virtual ObjectResult<Tonkho_Result> Tonkho(Nullable<int> thang, Nullable<int> nam)
@@ -666,6 +710,31 @@ namespace BaitaplonAPI
                 new ObjectParameter("tgkt", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updatecalam", macaParameter, tencaParameter, tgbdParameter, tgktParameter);
+        }
+    
+        public virtual int updateHoadon(string mahd, string makh, Nullable<double> tongtien, string maud, string username)
+        {
+            var mahdParameter = mahd != null ?
+                new ObjectParameter("mahd", mahd) :
+                new ObjectParameter("mahd", typeof(string));
+    
+            var makhParameter = makh != null ?
+                new ObjectParameter("makh", makh) :
+                new ObjectParameter("makh", typeof(string));
+    
+            var tongtienParameter = tongtien.HasValue ?
+                new ObjectParameter("tongtien", tongtien) :
+                new ObjectParameter("tongtien", typeof(double));
+    
+            var maudParameter = maud != null ?
+                new ObjectParameter("maud", maud) :
+                new ObjectParameter("maud", typeof(string));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("updateHoadon", mahdParameter, makhParameter, tongtienParameter, maudParameter, usernameParameter);
         }
     
         public virtual ObjectResult<uudaimoinhat_Result> uudaimoinhat(string maUD)

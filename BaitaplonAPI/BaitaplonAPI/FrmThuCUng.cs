@@ -201,6 +201,10 @@ namespace BaitaplonAPI
                         maud = item.MaUD;
                         return;
                     }
+                    else
+                    {
+                        maud = null;
+                    }
                 }
             }
         }
@@ -209,12 +213,22 @@ namespace BaitaplonAPI
         {
 
         }
-
+        private void loadkh()
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                List<KhachHang> kh = quanli.KhachHangs.ToList();
+                cbkh.DataSource = kh;
+                cbkh.DisplayMember = "MaKH";
+                cbkh.ValueMember = "MaKH";
+            }
+        }
         private void Husky_Load(object sender, EventArgs e)
 
         {
-            
-            
+
+            loadkh();
+           
             loadLoaiThuCung();
             cbLoaiThuCung.SelectedIndex = -1;
             // loadHoaDonThuCung();
@@ -310,59 +324,71 @@ namespace BaitaplonAPI
             {
                 return;
             }
-            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            try
             {
-                HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == txtmahoadon.Text);
-                if (hd != null)
+                using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
                 {
-
-                    List<CTHoaDon> ds_cttc = quanli.CTHoaDons.Where(p => p.MaHD == txtmahoadon.Text).ToList();
-                    foreach (var item in ds_cttc)
+                    HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == txtmahoadon.Text);
+                    if (hd != null)
                     {
-                        quanli.CTHoaDons.Remove(item);
+
+                        List<CTHoaDon> ds_cttc = quanli.CTHoaDons.Where(p => p.MaHD == txtmahoadon.Text).ToList();
+                        foreach (var item in ds_cttc)
+                        {
+                            quanli.CTHoaDons.Remove(item);
+                            quanli.SaveChanges();
+                        }
+
+                    }
+                    else
+                    {
+                        hd = new HoaDon();
+                        hd.MaHD = txtmahoadon.Text;
+                        hd.UserName = "ngoctuan";
+                        hd.ThoiGianLap = DateTime.Now.Date;
+                        hd.MaKH = cbkh.SelectedValue.ToString();
+                        hd.TrangThai = false;
+                        hd.MaUD = maud;
+                        quanli.HoaDons.Add(hd);
                         quanli.SaveChanges();
                     }
 
-                }
-                else
-                {
-                    hd = new HoaDon();
-                    hd.MaHD = txtmahoadon.Text;
-                    hd.UserName = "ngoctuan";
-                    hd.ThoiGianLap = DateTime.Now.Date;
-                    hd.TrangThai = false;
-                    quanli.HoaDons.Add(hd);
-                    quanli.SaveChanges();
-                }
 
+                    if (txtuudai.Text != "0")
+                    {
 
-                if (txtuudai.Text != "")
-                {
+                        CTUuDai ud = new CTUuDai();
+                        ud.MaHD = txtmahoadon.Text;
+                        ud.MaUD = maud;
+                        Console.WriteLine(maud);
+                        quanli.CTUuDais.Add(ud);
+                        quanli.SaveChanges();
+                    }
+                    foreach (DataGridViewRow rows in dgvThuCung.Rows)
+                    {
+                        CTHoaDon ct = new CTHoaDon();
+                        string matc = rows.Cells["mathucung"].Value.ToString();
+                        string tentc = rows.Cells["tenthucung"].Value.ToString();
+                        int sl = int.Parse(rows.Cells["soluong"].Value.ToString());
+                        ct.MaHD = txtmahoadon.Text;
+                        ct.MaThuCung = matc;
+                        ct.tenthucung = tentc;
+                        ct.SoLuong = sl;
+                        quanli.CTHoaDons.Add(ct);
+                        quanli.SaveChanges();
+                    }
+                    MessageBox.Show("Lưu thành công!");
+                    loadhdchuathanhtoan();
+                    return;
+                }
+            }
+            catch (Exception)
+            {
 
-                    CTUuDai ud = new CTUuDai();
-                    ud.MaHD = txtmahoadon.Text;
-                    ud.MaUD = maud;
-                    Console.WriteLine(maud);
-                    quanli.CTUuDais.Add(ud);
-                    quanli.SaveChanges();
-                }
-                foreach (DataGridViewRow rows in dgvThuCung.Rows)
-                {
-                    CTHoaDon ct = new CTHoaDon();
-                    string matc = rows.Cells["mathucung"].Value.ToString();
-                    string tentc = rows.Cells["tenthucung"].Value.ToString();
-                    int sl = int.Parse(rows.Cells["soluong"].Value.ToString());
-                    ct.MaHD = txtmahoadon.Text;
-                    ct.MaThuCung = matc;
-                    ct.tenthucung = tentc;
-                    ct.SoLuong = sl;
-                    quanli.CTHoaDons.Add(ct);
-                    quanli.SaveChanges();
-                }
-                MessageBox.Show("Lưu thành công!");
-                loadhdchuathanhtoan();
+                MessageBox.Show("Không thể lưu thông tin vì lý do nào đó. Vui lòng kiểm tra lại");
                 return;
             }
+            
         }
 
         private void dgvThuCung_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -409,7 +435,6 @@ namespace BaitaplonAPI
                     double thanhtien = dongia * (double)item.SoLuong;
 
                     dgvThuCung.Rows.Add(item.MaThuCung, item.tenthucung, loaithucung, item.SoLuong, dongia, thanhtien);
-
                 }
             }
         }

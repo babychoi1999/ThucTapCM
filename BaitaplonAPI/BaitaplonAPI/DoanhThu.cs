@@ -43,5 +43,10 @@ namespace BaitaplonAPI
                 crystalReportViewer1.Show();
             }
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

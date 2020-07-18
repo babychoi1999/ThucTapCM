@@ -17,8 +17,18 @@ namespace BaitaplonAPI
             InitializeComponent();
         }
         public string user;
+        private void loadncc()
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                cbncc.DataSource = quanli.NhaCungCaps.ToList();
+                cbncc.DisplayMember = "TenNCC";
+                cbncc.ValueMember = "MaNCC";
+            }
+        }
         private void FrmPhieuNhap_Load(object sender, EventArgs e)
         {
+            loadncc();
             dgvPhieuNhap.AutoGenerateColumns = false;
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
             {
@@ -28,10 +38,14 @@ namespace BaitaplonAPI
         }
         private void btnthem_Click(object sender, EventArgs e)
         {
+            
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
             {
-                DangNhap dn = quanli.DangNhaps.FirstOrDefault(p => p.UserName == user);
-                quanli.insertPN(dn.MaNV, null);
+                
+                    DangNhap dn = quanli.DangNhaps.FirstOrDefault(p => p.UserName == user);
+                    quanli.insertPN(dn.MaNV, cbncc.SelectedValue.ToString());
+                MessageBox.Show("Thêm thành công!");
+                FrmPhieuNhap_Load(sender, e);
             }
         }
 
@@ -55,7 +69,6 @@ namespace BaitaplonAPI
                 using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
                 {
                     string mapn = dgvPhieuNhap.CurrentRow.Cells[0].Value.ToString();
-                    this.Hide();
                     FrmCTPhieuNhap ct = new FrmCTPhieuNhap();
                     ct.mapn = mapn;
                     ct.FormClosed += thoat;

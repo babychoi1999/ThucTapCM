@@ -31,8 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frmthucpham));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
             this.panelAnh = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,13 +44,6 @@
             this.txtmahoadon = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvThucPham = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.mathucpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenthucpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loaithucpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dongia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thanhtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.txtuudai = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,6 +56,13 @@
             this.txtdongia = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txttenthucpham = new System.Windows.Forms.TextBox();
+            this.mathucpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenthucpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loaithucpham = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dongia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thanhtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Xoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtsoluong)).BeginInit();
             this.panel2.SuspendLayout();
@@ -238,60 +238,6 @@
             this.dgvThucPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThucPham_CellContentClick);
             this.dgvThucPham.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvThucPham_RowStateChanged);
             // 
-            // mathucpham
-            // 
-            this.mathucpham.DataPropertyName = "xoa";
-            this.mathucpham.HeaderText = "Mã thực phẩm";
-            this.mathucpham.Name = "mathucpham";
-            this.mathucpham.ReadOnly = true;
-            this.mathucpham.Visible = false;
-            // 
-            // tenthucpham
-            // 
-            this.tenthucpham.HeaderText = "Tên thực phẩm";
-            this.tenthucpham.Name = "tenthucpham";
-            this.tenthucpham.ReadOnly = true;
-            // 
-            // loaithucpham
-            // 
-            this.loaithucpham.HeaderText = "Loại thực phẩm";
-            this.loaithucpham.Name = "loaithucpham";
-            this.loaithucpham.ReadOnly = true;
-            // 
-            // soluong
-            // 
-            this.soluong.HeaderText = "Số lượng";
-            this.soluong.Name = "soluong";
-            this.soluong.ReadOnly = true;
-            // 
-            // dongia
-            // 
-            this.dongia.HeaderText = "Đơn giá";
-            this.dongia.Name = "dongia";
-            this.dongia.ReadOnly = true;
-            // 
-            // thanhtien
-            // 
-            this.thanhtien.HeaderText = "Thành tiền";
-            this.thanhtien.Name = "thanhtien";
-            this.thanhtien.ReadOnly = true;
-            // 
-            // Xoa
-            // 
-            this.Xoa.DataPropertyName = "xoa";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.NullValue = "Xóa";
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Xoa.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Xoa.HeaderText = "Xóa";
-            this.Xoa.Name = "Xoa";
-            this.Xoa.ReadOnly = true;
-            this.Xoa.Text = "Xóa";
-            // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -305,6 +251,7 @@
             // txtuudai
             // 
             this.txtuudai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtuudai.Enabled = false;
             this.txtuudai.Location = new System.Drawing.Point(286, 214);
             this.txtuudai.Name = "txtuudai";
             this.txtuudai.Size = new System.Drawing.Size(95, 20);
@@ -415,6 +362,67 @@
             this.txttenthucpham.Size = new System.Drawing.Size(101, 20);
             this.txttenthucpham.TabIndex = 45;
             // 
+            // mathucpham
+            // 
+            this.mathucpham.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mathucpham.DataPropertyName = "xoa";
+            this.mathucpham.HeaderText = "Mã thực phẩm";
+            this.mathucpham.Name = "mathucpham";
+            this.mathucpham.ReadOnly = true;
+            this.mathucpham.Visible = false;
+            // 
+            // tenthucpham
+            // 
+            this.tenthucpham.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tenthucpham.HeaderText = "Tên thực phẩm";
+            this.tenthucpham.Name = "tenthucpham";
+            this.tenthucpham.ReadOnly = true;
+            // 
+            // loaithucpham
+            // 
+            this.loaithucpham.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.loaithucpham.HeaderText = "Loại thực phẩm";
+            this.loaithucpham.Name = "loaithucpham";
+            this.loaithucpham.ReadOnly = true;
+            // 
+            // soluong
+            // 
+            this.soluong.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.soluong.HeaderText = "Số lượng";
+            this.soluong.Name = "soluong";
+            this.soluong.ReadOnly = true;
+            // 
+            // dongia
+            // 
+            this.dongia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dongia.HeaderText = "Đơn giá";
+            this.dongia.Name = "dongia";
+            this.dongia.ReadOnly = true;
+            // 
+            // thanhtien
+            // 
+            this.thanhtien.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.thanhtien.HeaderText = "Thành tiền";
+            this.thanhtien.Name = "thanhtien";
+            this.thanhtien.ReadOnly = true;
+            // 
+            // Xoa
+            // 
+            this.Xoa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Xoa.DataPropertyName = "xoa";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.NullValue = "Xóa";
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Xoa.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Xoa.HeaderText = "Xóa";
+            this.Xoa.Name = "Xoa";
+            this.Xoa.ReadOnly = true;
+            this.Xoa.Text = "Xóa";
+            // 
             // Frmthucpham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,6 +466,8 @@
         private System.Windows.Forms.TextBox txtmahoadon;
         private System.Windows.Forms.ComboBox cbLoaiThucPham;
         private System.Windows.Forms.NumericUpDown txtsoluong;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbchuathanhtoan;
         private System.Windows.Forms.DataGridViewTextBoxColumn mathucpham;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenthucpham;
         private System.Windows.Forms.DataGridViewTextBoxColumn loaithucpham;
@@ -465,7 +475,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dongia;
         private System.Windows.Forms.DataGridViewTextBoxColumn thanhtien;
         private System.Windows.Forms.DataGridViewButtonColumn Xoa;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbchuathanhtoan;
     }
 }
