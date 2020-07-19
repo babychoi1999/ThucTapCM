@@ -108,8 +108,14 @@ namespace BaitaplonAPI
 
         private void dgvuudai_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnluu.Enabled = true;
             makm = dgvuudai.Rows[e.RowIndex].Cells["mauudai"].Value.ToString();
+            if (makm == "")
+            {
+                MessageBox.Show("Bạn chưa chọn khuyễn mãi cần sửa");
+                return;
+            }
+            btnluu.Enabled = true;
+           
             txttenud.Text = dgvuudai.Rows[e.RowIndex].Cells["tenud"].Value.ToString();
             tgbdud.Value = Convert.ToDateTime(dgvuudai.Rows[e.RowIndex].Cells["ngaybatdau"].Value.ToString());
             tgktud.Value = Convert.ToDateTime(dgvuudai.Rows[e.RowIndex].Cells["ngayketthuc"].Value.ToString());
@@ -145,37 +151,68 @@ namespace BaitaplonAPI
 
         private void btnthem_Click(object sender, EventArgs e)
         {
+          
             if (!kiemtraud())
                 return;
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
             {
-                int giamgia = int.Parse(txtgiamgia.Text);
-                quanli.insertudhd(txttenud.Text, tgbdud.Value, tgktud.Value, giamgia, null);
-                quanli.SaveChanges();
-                MessageBox.Show("Đã thêm !!");
-                loaduudai();
+                UuDaiHD ud = quanli.UuDaiHDs.FirstOrDefault(p => p.TenUD == txttenud.Text.Trim());
+                if (ud != null)
+                {
+                    MessageBox.Show("Đã có ưu đãi" + txttenud.Text + "không thể thêm!");
+                    return;
+                }
+                try
+                {
+
+                   
+                   
+                    int giamgia = int.Parse(txtgiamgia.Text);
+                    quanli.insertudhd(txttenud.Text, tgbdud.Value, tgktud.Value, giamgia, null);
+                    quanli.SaveChanges();
+                    MessageBox.Show("Đã thêm !!");
+                    loaduudai();
+
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Không thể thêm, vui lòng kiểm tra lại");
+                    return;
+                }
             }
             resetud();
         }
         string makm = "";
         private void btnluu_Click(object sender, EventArgs e)
         {
+            
             if (!kiemtraud())
             {
                 return;
             }
-            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            try
             {
-                UuDaiHD ud = quanli.UuDaiHDs.FirstOrDefault(p => p.MaUD == makm);
-                ud.TenUD = txttenud.Text;
-                ud.NgayBD = tgbdud.Value;
-                ud.NgayKT = tgktud.Value;
-                ud.GiamGia = int.Parse(txtgiamgia.Text);
-                quanli.SaveChanges();
-                MessageBox.Show("Đã sửa");
-                loaduudai();
-                resetud();
+                using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+                {
+                    UuDaiHD ud = quanli.UuDaiHDs.FirstOrDefault(p => p.MaUD == makm);
+                    ud.TenUD = txttenud.Text;
+                    ud.NgayBD = tgbdud.Value;
+                    ud.NgayKT = tgktud.Value;
+                    ud.GiamGia = int.Parse(txtgiamgia.Text);
+                    quanli.SaveChanges();
+                    MessageBox.Show("Đã sửa");
+                    loaduudai();
+                    resetud();
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Không thể sửa, vui lòng kiểm tra lại");
+                return;
+            }
+            
         }
 
         private void FrmQuanly_Load(object sender, EventArgs e)
@@ -188,6 +225,7 @@ namespace BaitaplonAPI
             loadtaikhoan();
             loadcbnhanvien();
             btn_luu.Enabled = false;
+            
             btnxoa.Enabled = false;
         }
 
@@ -285,6 +323,7 @@ namespace BaitaplonAPI
                 MessageBox.Show(this, "Thêm thành công!!", null, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        string taikhoan = "";
         public void lammoidangnhap()
         {
             txtuser.Text = "";
@@ -295,7 +334,13 @@ namespace BaitaplonAPI
         public string user;
         private void dgvtaikhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            taikhoan = dgvtaikhoan.Rows[e.RowIndex].Cells["username"].Value.ToString();
             string username = dgvtaikhoan.Rows[e.RowIndex].Cells["username"].Value.ToString();
+            if(taikhoan == "")
+            {
+                MessageBox.Show("Bạn chưa chọn tài khoản cần xóa");
+                return;
+            }
             if (username == "ngoctuan")
             {
                 MessageBox.Show(this, "Tài khoản này không thể xóa !!", null, MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -12,7 +12,7 @@ namespace BaitaplonAPI
 {
     public partial class Formnhanvien : UserControl
     {
-        string manv;
+        string manv = null;
         public Formnhanvien()
         {
             InitializeComponent();
@@ -35,6 +35,7 @@ namespace BaitaplonAPI
                 table.Columns.Add("cmnd");
                 table.Columns.Add("sdt");
                 table.Columns.Add("chucvu");
+                table.Columns.Add("gmail");
                 foreach (NhanVien item in ds_nhanvien)
                 {
                     string chucvu = "";
@@ -42,7 +43,7 @@ namespace BaitaplonAPI
                         chucvu = "rỗng";
                     else
                         chucvu = quanli.ChucVus.FirstOrDefault(p => p.MaCV == item.MaCV).TenCV;
-                    table.Rows.Add(item.MaNV, item.TenNV, item.CMND, item.DiaChi, item.sodienthoai, chucvu);
+                    table.Rows.Add(item.MaNV, item.TenNV, item.CMND, item.DiaChi, item.sodienthoai, chucvu,item.Gmail);
                 }
                 dgvnhanvien.AutoGenerateColumns = false;
                 dgvnhanvien.DataSource = table;
@@ -150,13 +151,18 @@ namespace BaitaplonAPI
     
         private void dgvnhanvien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 6)
+            manv = dgvnhanvien.CurrentRow.Cells[0].Value.ToString();
+            if (manv == null)
+            {
+                MessageBox.Show("Bạn chưa chọn nhân viên cần sửa");
+                return;
+            }
+            if (e.ColumnIndex == 7)
             {
                 if (MessageBox.Show("bạn có muốn xóa nhân viên này không ?", "xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
                     {
-                        string manv = dgvnhanvien.CurrentRow.Cells[0].Value.ToString();
                         quanli.deleteNhanVien(manv);
                         MessageBox.Show("đã xóa");
                         Formnhanvien_Load(sender, e);
@@ -170,7 +176,7 @@ namespace BaitaplonAPI
         private void btnsua_Click(object sender, EventArgs e)
         {
             FrmSuaNhanVien suaNhanVien = new FrmSuaNhanVien();
-            suaNhanVien.Manv = this.manv;
+            suaNhanVien.manv = manv;
             suaNhanVien.ShowDialog();
         }
 
@@ -202,6 +208,28 @@ namespace BaitaplonAPI
             int thang = dtpthangluong.Value.Month;
             int nam = dtpthangluong.Value.Year;
             loadluongnhanvien(thang, nam);
+        }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txttimkiem_TextChanged(object sender, EventArgs e)
+        {
+            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            {
+                if (txttimkiem.Text.Trim() == "" || txttimkiem.Text.Trim() == null)
+                {
+                    dgvnhanvien.DataSource = quanli.HoaDons.ToList();
+                }
+                else if (txttimkiem.Text.Trim() != "")
+                {
+                    dgvnhanvien.AutoGenerateColumns = false;
+                    dgvnhanvien.DataSource = quanli.timkiemnhanvien(txttimkiem.Text);
+
+                }
+            }
         }
     }
 }

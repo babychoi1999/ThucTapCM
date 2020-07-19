@@ -41,28 +41,47 @@ namespace BaitaplonAPI
         
         private void btxoa1_Click(object sender, EventArgs e)
         {
-            using (quanlithucungEntities1 thucung = new quanlithucungEntities1())
+            try
             {
-                string makh = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                thucung.deleteKH(makh);
-                thucung.SaveChanges();
-                MessageBox.Show("Xóa thành công");
-                kh1_Load(sender, e);
+                using (quanlithucungEntities1 thucung = new quanlithucungEntities1())
+                {
+                    string makh = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                    thucung.deleteKH(makh);
+                    thucung.SaveChanges();
+                    MessageBox.Show("Xóa thành công");
+                    kh1_Load(sender, e);
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Không thể xóa, vui lòng kiểm tra lại");
+                return;
+            }
+            
         }
 
         private void btthem1_Click(object sender, EventArgs e)
         {
             if (!kt())
                 return;
-          
-            using (quanlithucungEntities1 thucung = new quanlithucungEntities1())
+            try
             {
-                thucung.insertKH(txttenkh.Text, int.Parse(txtsdt.Text), txtdiachi.Text, txtemail.Text);
-                thucung.SaveChanges();
-                MessageBox.Show("Thêm thành công!");
-                kh1_Load(sender, e);
+                using (quanlithucungEntities1 thucung = new quanlithucungEntities1())
+                {
+                    thucung.insertKH(txttenkh.Text, int.Parse(txtsdt.Text), txtdiachi.Text, txtemail.Text);
+                    thucung.SaveChanges();
+                    MessageBox.Show("Thêm thành công!");
+                    kh1_Load(sender, e);
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Không thể thêm, vui lòng kiểm tra lại");
+                return;
+            }
+           
         }
 
        
@@ -71,17 +90,27 @@ namespace BaitaplonAPI
         {
             if (!kt())
                 return;
-            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            try
             {
-               KhachHang kh = quanli.KhachHangs.FirstOrDefault(p => p.MaKH == makhachhang);
-                kh.TenKH = txttenkh.Text;
-                kh.DiaChi = txtdiachi.Text;
-                kh.SDT = int.Parse(txtsdt.Text);
-                kh.Email = txtemail.Text;
-                quanli.SaveChanges();
-                MessageBox.Show("Đã sửa");
-                kh1_Load(sender, e);
+                using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+                {
+                    KhachHang kh = quanli.KhachHangs.FirstOrDefault(p => p.MaKH == makhachhang);
+                    kh.TenKH = txttenkh.Text;
+                    kh.DiaChi = txtdiachi.Text;
+                    kh.SDT = int.Parse(txtsdt.Text);
+                    kh.Email = txtemail.Text;
+                    quanli.SaveChanges();
+                    MessageBox.Show("Đã sửa");
+                    kh1_Load(sender, e);
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Không thể sửa, vui lòng kiểm tra lại!");
+                return;
+            }
+          
         }
 
         private static object GetKhachHangs(quanlithucungEntities1 thucung)
@@ -134,7 +163,7 @@ namespace BaitaplonAPI
             }
             catch
             {
-                MessageBox.Show("Kiểu dữ liệu không đúng. Nó là kiểu số nguyên!");
+                MessageBox.Show("Kiểu dữ liệu không đúng. Số đuện thoại phải là kiểu số nguyên!");
                 return false;
             }
             return true;
@@ -149,7 +178,7 @@ namespace BaitaplonAPI
                 writer.Write(dataGridView1.Rows[i].Cells[4].Value.ToString() + "\n");
             }
             writer.Close();
-            MessageBox.Show("Đã nhập vào ok");
+            MessageBox.Show("Đã xuất danh sách gmail!");
         }
     }
 }

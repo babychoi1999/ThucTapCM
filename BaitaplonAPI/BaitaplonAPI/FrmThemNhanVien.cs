@@ -111,20 +111,46 @@ namespace BaitaplonAPI
             {
                 return;
             }
-            else
+            try
             {
-                using(quanlithucungEntities1 quanli = new quanlithucungEntities1())
+                using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
                 {
-                    quanli.insertnhanvien(txtten.Text, int.Parse(txtcmnd.Text), txtdiachi.Text, int.Parse(txtsdt.Text), cbchucvu.SelectedValue.ToString());
+                    quanli.insertnhanvien(txtten.Text, int.Parse(txtcmnd.Text), txtdiachi.Text, int.Parse(txtsdt.Text), cbchucvu.SelectedValue.ToString(),txtemail.Text);
                     quanli.SaveChanges();
                     MessageBox.Show("Thêm thành công!");
                 }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Không thể thêm, vui lòng kiểm tra lại");
+                return;
+            }
+            
+              
+            
         }
 
         private void btntrove_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtsdt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtsdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtcmnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

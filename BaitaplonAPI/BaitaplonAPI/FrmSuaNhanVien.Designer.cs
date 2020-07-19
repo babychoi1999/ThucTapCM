@@ -48,17 +48,19 @@
             this.btntrove = new DevExpress.XtraEditors.SimpleButton();
             this.btnluu = new DevExpress.XtraEditors.SimpleButton();
             this.cbchucvu = new System.Windows.Forms.ComboBox();
+            this.chucVuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quanlithucungDataSet30 = new BaitaplonAPI.quanlithucungDataSet30();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.quanlithucungDataSet30 = new BaitaplonAPI.quanlithucungDataSet30();
-            this.chucVuBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chucVuTableAdapter = new BaitaplonAPI.quanlithucungDataSet30TableAdapters.ChucVuTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.quanlithucungDataSet30)).BeginInit();
+            this.txtemail = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chucVuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quanlithucungDataSet30)).BeginInit();
             this.SuspendLayout();
             // 
             // txtcmnd
@@ -202,7 +204,7 @@
             // btntrove
             // 
             this.btntrove.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btntrove.ImageOptions.Image")));
-            this.btntrove.Location = new System.Drawing.Point(358, 276);
+            this.btntrove.Location = new System.Drawing.Point(358, 285);
             this.btntrove.Name = "btntrove";
             this.btntrove.Size = new System.Drawing.Size(75, 30);
             this.btntrove.TabIndex = 87;
@@ -212,7 +214,7 @@
             // btnluu
             // 
             this.btnluu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnluu.ImageOptions.Image")));
-            this.btnluu.Location = new System.Drawing.Point(202, 276);
+            this.btnluu.Location = new System.Drawing.Point(202, 285);
             this.btnluu.Name = "btnluu";
             this.btnluu.Size = new System.Drawing.Size(80, 30);
             this.btnluu.TabIndex = 86;
@@ -230,6 +232,16 @@
             this.cbchucvu.Size = new System.Drawing.Size(121, 23);
             this.cbchucvu.TabIndex = 85;
             this.cbchucvu.ValueMember = "MaCV";
+            // 
+            // chucVuBindingSource
+            // 
+            this.chucVuBindingSource.DataMember = "ChucVu";
+            this.chucVuBindingSource.DataSource = this.quanlithucungDataSet30;
+            // 
+            // quanlithucungDataSet30
+            // 
+            this.quanlithucungDataSet30.DataSetName = "quanlithucungDataSet30";
+            this.quanlithucungDataSet30.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label6
             // 
@@ -287,25 +299,34 @@
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // quanlithucungDataSet30
-            // 
-            this.quanlithucungDataSet30.DataSetName = "quanlithucungDataSet30";
-            this.quanlithucungDataSet30.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // chucVuBindingSource
-            // 
-            this.chucVuBindingSource.DataMember = "ChucVu";
-            this.chucVuBindingSource.DataSource = this.quanlithucungDataSet30;
-            // 
             // chucVuTableAdapter
             // 
             this.chucVuTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtemail
+            // 
+            this.txtemail.Location = new System.Drawing.Point(311, 256);
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Size = new System.Drawing.Size(122, 20);
+            this.txtemail.TabIndex = 105;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(199, 258);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 18);
+            this.label1.TabIndex = 104;
+            this.label1.Text = "Email:";
             // 
             // FrmSuaNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 337);
+            this.Controls.Add(this.txtemail);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtcmnd);
             this.Controls.Add(this.txtsdt);
             this.Controls.Add(this.txtdiachi);
@@ -332,8 +353,8 @@
             this.Name = "FrmSuaNhanVien";
             this.Text = "Sửa nhân viên";
             this.Load += new System.EventHandler(this.FrmSuaNhanVien_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.quanlithucungDataSet30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chucVuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quanlithucungDataSet30)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,5 +389,7 @@
         private quanlithucungDataSet30 quanlithucungDataSet30;
         private System.Windows.Forms.BindingSource chucVuBindingSource;
         private quanlithucungDataSet30TableAdapters.ChucVuTableAdapter chucVuTableAdapter;
+        private System.Windows.Forms.TextBox txtemail;
+        private System.Windows.Forms.Label label1;
     }
 }

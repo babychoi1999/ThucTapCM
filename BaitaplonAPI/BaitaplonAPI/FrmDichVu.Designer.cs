@@ -173,6 +173,7 @@
             this.dgvDichvu.ShowRowErrors = false;
             this.dgvDichvu.Size = new System.Drawing.Size(377, 276);
             this.dgvDichvu.TabIndex = 61;
+            this.dgvDichvu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDichvu_CellClick);
             // 
             // madichvu
             // 

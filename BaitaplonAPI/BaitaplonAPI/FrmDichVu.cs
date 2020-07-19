@@ -129,6 +129,10 @@ namespace BaitaplonAPI
                         maud = item.MaUD;
                         return;
                     }
+                    else
+                    {
+                        maud = null;
+                    }
                 }
             }
         }
@@ -152,6 +156,8 @@ namespace BaitaplonAPI
             txtuudai.Enabled = false;
           
             loadhdchuathanhtoan();
+            btnluu.Enabled = false;
+            btnthanhtoan.Enabled = false;
         }
         string[] a = { "001", "002", "003", "004" };
         private bool kiemtraHD()
@@ -168,6 +174,11 @@ namespace BaitaplonAPI
         }
         private void btnthem_Click(object sender, EventArgs e)
         {
+            if (txttendichvu.Text == "")
+            {
+                MessageBox.Show("Bạn chưa chọn dịch vụ");
+                return;
+            }
             if (!kiemtraHD())
             {
                 MessageBox.Show("Mã hóa đơn chưa đúng định dạng : HD...");
@@ -196,6 +207,8 @@ namespace BaitaplonAPI
             }
             int tongtien = (soluong * dongia) - (soluong * dongia * uudai / 100);
             dgvDichvu.Rows.Add(new object[] { madv, txttendichvu.Text, txtsoluong.Value.ToString(), txtdongia.Text, tongtien });
+            btnluu.Enabled = true;
+            
         }
         string maud = "";
         private void btnluu_Click(object sender, EventArgs e)
@@ -209,7 +222,7 @@ namespace BaitaplonAPI
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
             {
                 HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == cbHoaDon.Text);
-                if (hd==null)
+                if (hd == null)
                 {
                     hd = new HoaDon();
                     hd.MaHD = cbHoaDon.Text;
@@ -219,12 +232,19 @@ namespace BaitaplonAPI
                     quanli.HoaDons.Add(hd);
                     quanli.SaveChanges();
                 }
+
                 else 
                 {
                     hd.TrangThai = false;
                 }
-                if (txtuudai.Text != "")
+                if (txtuudai.Text != "0")
                 {
+                    CTUuDai ct = quanli.CTUuDais.FirstOrDefault(p => p.MaHD == cbHoaDon.Text);
+                    if (ct != null)
+                    {
+                        MessageBox.Show("Hóa đơn này đã có ưu đãi");
+                        return;
+                    }
                     CTUuDai ud = new CTUuDai();
                     ud.MaHD = cbHoaDon.Text;
                     ud.MaUD = maud;
@@ -246,6 +266,9 @@ namespace BaitaplonAPI
                 }
                 MessageBox.Show("Lưu thành công!");
                 loadhdchuathanhtoan();
+                btnthem.Enabled = false;
+                btnluu.Enabled = false;
+                btnthanhtoan.Enabled = true;
                 return;
             }
         }
@@ -258,16 +281,30 @@ namespace BaitaplonAPI
                 MessageBox.Show("Chưa có hóa đơn để thanh toán");
                 return;
             }
-            using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            try
             {
-                HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == cbHoaDon.Text);
-                hd.TrangThai = true;
-                quanli.SaveChanges();
-                MessageBox.Show("Thanh toán thành công!");
-                FrmDichVu_Load(sender, e);
-                cbchuathanhtoan.Text = null;
+                using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+                {
+                    HoaDon hd = quanli.HoaDons.FirstOrDefault(p => p.MaHD == cbHoaDon.Text);
+                    hd.TrangThai = true;
+                    quanli.SaveChanges();
+                    MessageBox.Show("Thanh toán thành công!");
+                    FrmDichVu_Load(sender, e);
+                    cbchuathanhtoan.Text = null;
+                    btnthanhtoan.Enabled = false;
+                    btnthem.Enabled = true;
+                    txttendichvu.Text = "";
+                    txtdongia.Text = "";
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Xin lỗi, không thể thanh toán");
                 return;
             }
+            
         }
 
         private void cbchuathanhtoan_SelectedIndexChanged(object sender, EventArgs e)
@@ -286,6 +323,15 @@ namespace BaitaplonAPI
                     dgvDichvu.Rows.Add(item.MaDV, tendichvu, item.SoDV, dongia, thanhtien);
 
                 }
+            }
+        }
+
+        private void dgvDichvu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                MessageBox.Show("Đã xóa!");
+                dgvDichvu.Rows.Remove(dgvDichvu.Rows[e.RowIndex]);
             }
         }
     }

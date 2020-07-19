@@ -393,7 +393,7 @@ namespace BaitaplonAPI
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertNCC", tennccParameter, diachiParameter, sdtParameter);
         }
     
-        public virtual int insertnhanvien(string ten, Nullable<int> cmnd, string diachi, Nullable<int> sdt, string macv)
+        public virtual int insertnhanvien(string ten, Nullable<int> cmnd, string diachi, Nullable<int> sdt, string macv, string email)
         {
             var tenParameter = ten != null ?
                 new ObjectParameter("ten", ten) :
@@ -415,7 +415,11 @@ namespace BaitaplonAPI
                 new ObjectParameter("macv", macv) :
                 new ObjectParameter("macv", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertnhanvien", tenParameter, cmndParameter, diachiParameter, sdtParameter, macvParameter);
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertnhanvien", tenParameter, cmndParameter, diachiParameter, sdtParameter, macvParameter, emailParameter);
         }
     
         public virtual int insertnhappk(string mapn, string tenpk, Nullable<int> sl, Nullable<double> gianhap, string mancc, string dv, string maloai, byte[] anh)
@@ -676,6 +680,15 @@ namespace BaitaplonAPI
                 new ObjectParameter("tk", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<timkiemHD_Result>("timkiemHD", tkParameter);
+        }
+    
+        public virtual ObjectResult<timkiemnhanvien_Result> timkiemnhanvien(string nv)
+        {
+            var nvParameter = nv != null ?
+                new ObjectParameter("nv", nv) :
+                new ObjectParameter("nv", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<timkiemnhanvien_Result>("timkiemnhanvien", nvParameter);
         }
     
         public virtual ObjectResult<Tonkho_Result> Tonkho(Nullable<int> thang, Nullable<int> nam)

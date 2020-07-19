@@ -101,7 +101,7 @@ namespace BaitaplonAPI
         {
             
         }
-        String img = "";
+        string img = "";
         private void btnsuaHD_Click(object sender, EventArgs e)
         {
             moFile.ShowDialog();
@@ -320,9 +320,11 @@ namespace BaitaplonAPI
 
         private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             try
             {
                 mahoadon = dgvHoaDon.CurrentRow.Cells[0].Value.ToString();
+               
                
                 
                 
@@ -383,6 +385,11 @@ namespace BaitaplonAPI
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
+            if(mahoadon == "")
+            {
+                MessageBox.Show("Bạn chưa chọn hóa đơn cần sửa!");
+                return;
+            }
             using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
             {
                 try

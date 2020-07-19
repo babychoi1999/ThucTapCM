@@ -69,6 +69,7 @@
             this.txtmk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtmk.Location = new System.Drawing.Point(222, 163);
             this.txtmk.Name = "txtmk";
+            this.txtmk.PasswordChar = '*';
             this.txtmk.Size = new System.Drawing.Size(203, 26);
             this.txtmk.TabIndex = 20;
             // 

@@ -108,7 +108,6 @@
         </EntityType>
         <EntityType Name="CTUuDai">
           <Key>
-            <PropertyRef Name="MaUD" />
             <PropertyRef Name="MaHD" />
           </Key>
           <Property Name="MaUD" Type="nchar" MaxLength="50" Nullable="false" />
@@ -488,7 +487,7 @@
         </Association>
         <Association Name="FK_CTUuDai_HoaDon">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
-          <End Role="CTUuDai" Type="Self.CTUuDai" Multiplicity="*" />
+          <End Role="CTUuDai" Type="Self.CTUuDai" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
               <PropertyRef Name="MaHD" />
@@ -799,6 +798,7 @@
           <Parameter Name="diachi" Type="nvarchar" Mode="In" />
           <Parameter Name="sdt" Type="int" Mode="In" />
           <Parameter Name="macv" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="insertnhappk" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mapn" Type="nvarchar" Mode="In" />
@@ -926,6 +926,9 @@
         </Function>
         <Function Name="timkiemHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tk" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="timkiemnhanvien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nv" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="Tonkho" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="thang" Type="int" Mode="In" />
@@ -1270,7 +1273,6 @@
         </EntityType>
         <EntityType Name="CTUuDai">
           <Key>
-            <PropertyRef Name="MaUD" />
             <PropertyRef Name="MaHD" />
           </Key>
           <Property Name="MaUD" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
@@ -1313,7 +1315,7 @@
           <NavigationProperty Name="CTHoaDons" Relationship="Self.FK_CTHoaDon_HoaDon" FromRole="HoaDon" ToRole="CTHoaDon" />
           <NavigationProperty Name="CTPHUKIENs" Relationship="Self.FK_CTPHUKIEN_HoaDon" FromRole="HoaDon" ToRole="CTPHUKIEN" />
           <NavigationProperty Name="CTTHUCPHAMs" Relationship="Self.FK_CTTHUCPHAM_HoaDon" FromRole="HoaDon" ToRole="CTTHUCPHAM" />
-          <NavigationProperty Name="CTUuDais" Relationship="Self.FK_CTUuDai_HoaDon" FromRole="HoaDon" ToRole="CTUuDai" />
+          <NavigationProperty Name="CTUuDai" Relationship="Self.FK_CTUuDai_HoaDon" FromRole="HoaDon" ToRole="CTUuDai" />
           <NavigationProperty Name="DangNhap" Relationship="Self.FK_HoaDon_DangNhap" FromRole="HoaDon" ToRole="DangNhap" />
           <NavigationProperty Name="KhachHang" Relationship="Self.FK_HoaDon_KhachHang" FromRole="HoaDon" ToRole="KhachHang" />
           <NavigationProperty Name="UuDaiHD" Relationship="Self.FK_HoaDon_UuDaiHD" FromRole="HoaDon" ToRole="UuDaiHD" />
@@ -1717,7 +1719,7 @@
         </Association>
         <Association Name="FK_CTUuDai_HoaDon">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
-          <End Role="CTUuDai" Type="Self.CTUuDai" Multiplicity="*" />
+          <End Role="CTUuDai" Type="Self.CTUuDai" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
               <PropertyRef Name="MaHD" />
@@ -2116,6 +2118,7 @@
             <Parameter Name="diachi" Mode="In" Type="String" />
             <Parameter Name="sdt" Mode="In" Type="Int32" />
             <Parameter Name="macv" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="insertnhappk">
             <Parameter Name="mapn" Mode="In" Type="String" />
@@ -2191,6 +2194,9 @@
           </FunctionImport>
           <FunctionImport Name="timkiemHD" ReturnType="Collection(quanlithucungModel.timkiemHD_Result)">
             <Parameter Name="tk" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="timkiemnhanvien" ReturnType="Collection(quanlithucungModel.timkiemnhanvien_Result)">
+            <Parameter Name="nv" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Tonkho" ReturnType="Collection(quanlithucungModel.Tonkho_Result)">
             <Parameter Name="thang" Mode="In" Type="Int32" />
@@ -2312,6 +2318,15 @@
           <Property Type="String" Name="MaUD" Nullable="true" MaxLength="10" />
           <Property Type="Boolean" Name="TrangThai" Nullable="true" />
           <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="timkiemnhanvien_Result">
+          <Property Type="String" Name="MaNV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TenNV" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MaCV" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="sodienthoai" Nullable="true" />
+          <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gmail" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CMND" Nullable="true" />
         </ComplexType>
         <ComplexType Name="Tonkho_Result">
           <Property Type="String" Name="MaHang" Nullable="true" MaxLength="100" />
@@ -2890,6 +2905,19 @@
                 <ScalarProperty Name="MaUD" ColumnName="MaUD" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="timkiemnhanvien" FunctionName="quanlithucungModel.Store.timkiemnhanvien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="quanlithucungModel.timkiemnhanvien_Result">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+                <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+                <ScalarProperty Name="sodienthoai" ColumnName="sodienthoai" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Gmail" ColumnName="Gmail" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

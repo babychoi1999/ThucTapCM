@@ -245,6 +245,8 @@ namespace BaitaplonAPI
                 }
             }
             loadhdchuathanhtoan();
+            btnluu.Enabled = false;
+           btnthanhtoan.Enabled = false;
         }
 
         private void loadHoaDonThuCung()
@@ -268,6 +270,11 @@ namespace BaitaplonAPI
         }
         private void btnthem_Click(object sender, EventArgs e)
         {
+            if(txttenthucung.Text == "" )
+            {
+                MessageBox.Show("Bạn chưa chọn thú cưng");
+                return;
+            }
             if(txtsoluong.Value == 0)
             {
                 MessageBox.Show("Số lượng thú cưng không thể là 0");
@@ -296,6 +303,7 @@ namespace BaitaplonAPI
                  int  tongtien = (soluong * dongia) - (soluong * dongia * uudai/100);
                 dgvThuCung.Rows.Add(new object[] { matc, txttenthucung.Text, cbLoaiThuCung.Text,
                     txtsoluong.Value.ToString(), txtdongia.Text, tongtien });
+            btnluu.Enabled = true;
             
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -379,6 +387,9 @@ namespace BaitaplonAPI
                     }
                     MessageBox.Show("Lưu thành công!");
                     loadhdchuathanhtoan();
+                    btnluu.Enabled = false;
+                    btnthanhtoan.Enabled = true;
+                    btnthem.Enabled = false;
                     return;
                 }
             }
@@ -415,6 +426,11 @@ namespace BaitaplonAPI
                 MessageBox.Show("Thanh toán thành công!");
                 Husky_Load(sender, e);
                 cbchuathanhtoan.Text = null;
+                btnthanhtoan.Enabled = false;
+                btnthem.Enabled = true;
+                txttenthucung.Text = "";
+                txtdongia.Text = "";
+                txtsoluong.Value = 0;
                 return;
             }
         }

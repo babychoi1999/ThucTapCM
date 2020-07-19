@@ -67,7 +67,7 @@
             this.txttendangnhap.Name = "txttendangnhap";
             this.txttendangnhap.Size = new System.Drawing.Size(241, 20);
             this.txttendangnhap.TabIndex = 2;
-            this.txttendangnhap.Text = "nguyenthithuhong7399@gmail.com";
+            this.txttendangnhap.Text = "babychoi1999@gmail.com";
             // 
             // txtmatkhau
             // 
@@ -77,7 +77,7 @@
             this.txtmatkhau.PasswordChar = '*';
             this.txtmatkhau.Size = new System.Drawing.Size(241, 20);
             this.txtmatkhau.TabIndex = 3;
-            this.txtmatkhau.Text = "0329104765";
+            this.txtmatkhau.Text = "babychoi";
             // 
             // txtTo
             // 

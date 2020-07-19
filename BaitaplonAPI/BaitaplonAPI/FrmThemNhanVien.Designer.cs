@@ -58,6 +58,8 @@
             this.txtdiachi = new System.Windows.Forms.TextBox();
             this.txtsdt = new System.Windows.Forms.TextBox();
             this.txtcmnd = new System.Windows.Forms.TextBox();
+            this.txtemail = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chucVuBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlithucungDataSet27)).BeginInit();
             this.SuspendLayout();
@@ -137,7 +139,7 @@
             // btntrove
             // 
             this.btntrove.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btntrove.ImageOptions.Image")));
-            this.btntrove.Location = new System.Drawing.Point(307, 258);
+            this.btntrove.Location = new System.Drawing.Point(307, 275);
             this.btntrove.Name = "btntrove";
             this.btntrove.Size = new System.Drawing.Size(75, 30);
             this.btntrove.TabIndex = 63;
@@ -147,7 +149,7 @@
             // btnthem
             // 
             this.btnthem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnthem.ImageOptions.Image")));
-            this.btnthem.Location = new System.Drawing.Point(151, 258);
+            this.btnthem.Location = new System.Drawing.Point(151, 275);
             this.btnthem.Name = "btnthem";
             this.btnthem.Size = new System.Drawing.Size(80, 30);
             this.btnthem.TabIndex = 62;
@@ -304,6 +306,8 @@
             this.txtsdt.Name = "txtsdt";
             this.txtsdt.Size = new System.Drawing.Size(122, 20);
             this.txtsdt.TabIndex = 78;
+            this.txtsdt.TextChanged += new System.EventHandler(this.txtsdt_TextChanged);
+            this.txtsdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsdt_KeyPress);
             // 
             // txtcmnd
             // 
@@ -311,12 +315,32 @@
             this.txtcmnd.Name = "txtcmnd";
             this.txtcmnd.Size = new System.Drawing.Size(122, 20);
             this.txtcmnd.TabIndex = 79;
+            this.txtcmnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcmnd_KeyPress);
+            // 
+            // txtemail
+            // 
+            this.txtemail.Location = new System.Drawing.Point(260, 240);
+            this.txtemail.Name = "txtemail";
+            this.txtemail.Size = new System.Drawing.Size(122, 20);
+            this.txtemail.TabIndex = 81;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(148, 242);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 18);
+            this.label1.TabIndex = 80;
+            this.label1.Text = "Email:";
             // 
             // FrmThemNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 317);
+            this.Controls.Add(this.txtemail);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtcmnd);
             this.Controls.Add(this.txtsdt);
             this.Controls.Add(this.txtdiachi);
@@ -381,5 +405,7 @@
         private System.Windows.Forms.TextBox txtdiachi;
         private System.Windows.Forms.TextBox txtsdt;
         private System.Windows.Forms.TextBox txtcmnd;
+        private System.Windows.Forms.TextBox txtemail;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -720,6 +720,9 @@
     <Compile Include="timkiemHD_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="timkiemnhanvien_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="TonKho.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -983,6 +986,9 @@
     <None Include="DataSet6.xss">
       <DependentUpon>DataSet6.xsd</DependentUpon>
     </None>
+    <None Include="Hình phụ kiện\my-icons-collection.zip" />
+    <None Include="Hình phụ kiện\pets-shop-logo-template-260nw-1053368126.webp" />
+    <None Include="Hình phụ kiện\pexels-photo-4587992.webp" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -1467,17 +1473,200 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Hình phụ kiện\23D39381-CD4E-4AE4-8634-571968100E26.jpeg" />
+    <Content Include="Hình phụ kiện\27.2.jpg" />
+    <Content Include="Hình phụ kiện\3.3.jpg" />
+    <Content Include="Hình phụ kiện\49482101_1992628450826657_303573880528699392_n.jpg" />
+    <Content Include="Hình phụ kiện\5-4-680x400.jpg" />
+    <Content Include="Hình phụ kiện\5.3b.jpg" />
+    <Content Include="Hình phụ kiện\57222230_1282425655238849_398117187434315776_o_750x1000.jpg" />
+    <Content Include="Hình phụ kiện\58380293_1288041901343891_3760072627301908480_o_1536x2048.jpg" />
+    <Content Include="Hình phụ kiện\585930dc3aa29_1482240220 - Copy.jpg" />
+    <Content Include="Hình phụ kiện\585930dc3aa29_1482240220.jpg" />
+    <Content Include="Hình phụ kiện\65100279_1333113286836752_6306279774679465984_n.jpg" />
+    <Content Include="Hình phụ kiện\68474198_1370782239736523_2520533735552581632_n.jpg" />
+    <Content Include="Hình phụ kiện\68538834_1376449465836467_7242922759372668928_n.jpg" />
+    <Content Include="Hình phụ kiện\69589016_1391558727658874_3810193942163488768_n.jpg" />
+    <Content Include="Hình phụ kiện\70280048_1393946327420114_2503357448371306496_n.jpg" />
+    <Content Include="Hình phụ kiện\71813973_1420145338133546_8266992848507764736_n.jpg" />
+    <Content Include="Hình phụ kiện\72835561_1437995923015154_7605397220103290880_n.jpg" />
+    <Content Include="Hình phụ kiện\75462468_1446520615496018_4012590135639015424_n201.jpg" />
+    <Content Include="Hình phụ kiện\80048135-53A5-448A-8E3D-B41BF8938D27.jpeg" />
+    <Content Include="Hình phụ kiện\85123850_1551825188298893_9190359651202367488_o.jpg" />
+    <Content Include="Hình phụ kiện\90083419_1583609891787089_48864633200574464_o.jpg" />
+    <Content Include="Hình phụ kiện\90124707_1575422862605792_5184811509582135296_o.jpg" />
+    <Content Include="Hình phụ kiện\90168663_1580773245404087_6541768974638514176_o.jpg" />
+    <Content Include="Hình phụ kiện\90262758_1585486564932755_2711216634088914944_o.jpg" />
+    <Content Include="Hình phụ kiện\95168083_1619595481521863_3931317646317846528_o.jpg" />
+    <Content Include="Hình phụ kiện\a1_720x960.jpg" />
+    <Content Include="Hình phụ kiện\a2_727x958.jpg" />
+    <Content Include="Hình phụ kiện\add-book.png" />
+    <Content Include="Hình phụ kiện\add-contact-to-company.png" />
+    <Content Include="Hình phụ kiện\alaska-ăn-gì.jpg" />
+    <Content Include="Hình phụ kiện\Bắc-kinh-1.jpg" />
+    <Content Include="Hình phụ kiện\bill.png" />
+    <Content Include="Hình phụ kiện\c1_768x960.jpg" />
+    <Content Include="Hình phụ kiện\cach-nuoi-cho-bac-kinh-lai-nhat-1.jpg" />
+    <Content Include="Hình phụ kiện\cho-bac-kinh-2.png" />
+    <Content Include="Hình phụ kiện\cho-nhat-lai-bac-kinh-2.png" />
+    <Content Include="Hình phụ kiện\cho-Pembroke-Welsh-Corgi-1280x720.jpg" />
+    <Content Include="Hình phụ kiện\chó-b.jpg" />
+    <Content Include="Hình phụ kiện\clear-shopping-cart.png" />
+    <Content Include="Hình phụ kiện\client-company.png" />
+    <Content Include="Hình phụ kiện\commercial-development-management.png" />
+    <Content Include="Hình phụ kiện\Dan_corgi_chan_ngan_cute_1_800x771.jpg" />
+    <Content Include="Hình phụ kiện\Dan_corgi_tricolor_3_800x559.jpg" />
+    <Content Include="Hình phụ kiện\delete-forever.png" />
+    <Content Include="Hình phụ kiện\email.png" />
+    <Content Include="Hình phụ kiện\F05C4DDA-3111-4484-899D-A5E09F39EF08.jpeg" />
+    <Content Include="Hình phụ kiện\filled-star.png" />
+    <Content Include="Hình phụ kiện\food.png" />
+    <Content Include="Hình phụ kiện\garage-open.png" />
+    <Content Include="Hình phụ kiện\giong-cho-bac-kinh.jpg" />
+    <Content Include="Hình phụ kiện\hachiko.png" />
+    <Content Include="Hình phụ kiện\home-page.png" />
+    <Content Include="Hình phụ kiện\husky_nau_do_1_821x624.jpg" />
+    <Content Include="Hình phụ kiện\husky_nau_do_mat_sieu_ngau_1_720x960.jpg" />
+    <Content Include="Hình phụ kiện\icons8-account-50.png" />
+    <Content Include="Hình phụ kiện\icons8-bar-chart-50.png" />
+    <Content Include="Hình phụ kiện\icons8-client-management-50.png" />
+    <Content Include="Hình phụ kiện\icons8-collaboration-50.png" />
+    <Content Include="Hình phụ kiện\icons8-comments-50.png" />
+    <Content Include="Hình phụ kiện\icons8-communication-50.png" />
+    <Content Include="Hình phụ kiện\icons8-hand-with-pen-50.png" />
+    <Content Include="Hình phụ kiện\icons8-inspection-50.png" />
+    <Content Include="Hình phụ kiện\icons8-invite-50.png" />
+    <Content Include="Hình phụ kiện\icons8-job-50.png" />
+    <Content Include="Hình phụ kiện\icons8-mobile-payment-50.png" />
+    <Content Include="Hình phụ kiện\icons8-name-tag-50.png" />
+    <Content Include="Hình phụ kiện\icons8-online-support-50.png" />
+    <Content Include="Hình phụ kiện\icons8-planner-50.png" />
+    <Content Include="Hình phụ kiện\icons8-process-50.png" />
+    <Content Include="Hình phụ kiện\icons8-questions-50.png" />
+    <Content Include="Hình phụ kiện\icons8-reset-50.png" />
+    <Content Include="Hình phụ kiện\icons8-resume-50.png" />
+    <Content Include="Hình phụ kiện\icons8-schedule-50.png" />
+    <Content Include="Hình phụ kiện\icons8-small-business-50.png" />
+    <Content Include="Hình phụ kiện\icons8-supplier-50.png" />
+    <Content Include="Hình phụ kiện\icons8-task-50.png" />
+    <Content Include="Hình phụ kiện\icons8-task-completed-50.png" />
+    <Content Include="Hình phụ kiện\icons8-to-do-50.png" />
+    <Content Include="Hình phụ kiện\icons8-total-sales-50.png" />
+    <Content Include="Hình phụ kiện\icons8-wish-list-50.png" />
+    <Content Include="Hình phụ kiện\images %281%29.jpg" />
+    <Content Include="Hình phụ kiện\images.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_0156c0aec1184d7aafdf0de564d620f5.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_042eca9762c341f4bd13d9b92dbdce15.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_050f5540256a4a2d91ee56f0daca44de.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_0547884e1a764b26b3333b8c6cce6c19.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_0a55bf76c9284026ba15b6885324fb2d.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_0a6d94f3e6f04fb1b56f387c3a17503c.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_0dc6ce38b6634402894435d8a9be4639.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_1372f70d987a4994ab4f32c8e00fb9e2.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_17d486b8695942b399d646259cbf2840.jpg" />
     <Content Include="Hình phụ kiện\kiotviet_1d5a0f8d8346408e9508f8cd207d7663.jpeg" />
     <Content Include="Hình phụ kiện\kiotviet_22b0dafe37ed4b90aabfc54392a72c96.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_22fdf43b26dc4db686941fae138ea8fe.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_2508b2f1d9004220898cd783442c488c.jpg" />
     <Content Include="Hình phụ kiện\kiotviet_25c1d2d3511046c1abe884aa7ed7fbb5.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_2819bcdcbaa54b5689f725a25a51c17f.jpg" />
     <Content Include="Hình phụ kiện\kiotviet_2cfb7e2fd08641beb00e8079aadc533e.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_2f001ec6514448e88bbf266641e72878.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_2ffe6afe9bd54f52b6dd80c5ee3f6563.jpeg" />
     <Content Include="Hình phụ kiện\kiotviet_31578f84edb44648abefd4137ca517e9.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_34bca7eb033248c9ad98757c91c6b2bd.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_374aa6ebe4bd464d858c21fa41b62006.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_3797ce89c39e436aa3c510fd8b8b4b67.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_37e1ec1f235a4a658050d1ab8c901f1e.jpg" />
     <Content Include="Hình phụ kiện\kiotviet_39c74dc46c6c4d55a72d1ec03f35a995.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_40c409ba285648db8f8f05521b0f4347.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_4203d63bd4ce437cae5adf0ea4804d49.jpeg" />
     <Content Include="Hình phụ kiện\kiotviet_51be5e2fd0f84ccebc2872b5f27c0461.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_54f324b1130c4bee8d95887df2697dc0.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_5d000f10d39d4c4b97cdfaaccab3fc9e.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_6046d347aec64177b9013453ae601beb.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_641308d95ddf40ed8318681037d00bcc.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_6498a2a9cf9b4c829966c15c790f3245.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_6a8e9f76676a405eab67aa6e8c8dbf4f.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_6a9e4994414344e38889ecd4a8fbc1b2.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_6bc1265226144907bb668ad0b0da3067.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_719e4def57394072b3d15793a9202d17.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_76a0ad8697f84ad886cdf2d3a059407a.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_76aae589d47a4f92be2bc9eddaa15608.jpeg" />
     <Content Include="Hình phụ kiện\kiotviet_7c3ebd0b55a048699f274ddca68965ce.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_7c44dcb7bcf648ea80376d958579717e.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_8741c01052194519a64a60b5c8c5dce1.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_9175c1f2cd60414697c6e17572a8c247.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_9245855d74a54525a9fbacccf1680102.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_92676c9040d649349d386cf0fa05bf9a.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_98f24416c3a84651a1fcb3afa7c790db.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_99ffba6aab534a109d65bb3bfd2dfee3.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_9ac9bdec9dbb469493bd2852df5e987d.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_9d453ff16a914caa9345913737082eef.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_a68a9fe6569e42dc8353f4dc9c13c91d.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_a8784a24f033454286a793495bb1fca6.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_a88ba6e6d3004011a2430eb2eda4b1cf.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_a9d27ab9fba54b71a9a7e37c97316e99.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_aac8cd30ffcc4b8f855696fed1c2b5ce.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_ae65d5af10544ee4b459dcaeac07641a.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_aefdae617df844d9af3363e769222ed2.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_af850a4fec7746559caa89a367dfaa5e.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_b2a26fe246da4399af41dad04e39146a.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_b32f039c0c5e40569e8c3936f8da3be0.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_b43cd36c047f486f95d0b5c777c0dfd8.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_b8ff9247eab74cc98457810f9d07ad0a.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_ba87135d58b941e8ad8a518276a609b3.jpeg" />
     <Content Include="Hình phụ kiện\kiotviet_bbea7c78a81a430999140c748fc549e3.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_bdbf26672b2d4fb99c79ee37316608db.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_be97447d6a3e476294853e7ea9a3cbc4.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_c1c34154b784401c8bc1f208e64607bb.png" />
+    <Content Include="Hình phụ kiện\kiotviet_c3ccd83a99ba43d38549213bec9213a8.png" />
+    <Content Include="Hình phụ kiện\kiotviet_c89e4c786e3749ec9d501bdb8410f9d8.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_d17a825f804a458d8533b7ad77afb1b4.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_d1f00a0169864d16bc7cc90bc85c9686.png" />
+    <Content Include="Hình phụ kiện\kiotviet_de87d984b0a743179a5e681dc192324c.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_e2d36de2b6824c9893ca8fdd6e485cd4.jpeg" />
     <Content Include="Hình phụ kiện\kiotviet_e56c96eb948846c7907b3c5e0e0a39ac.jpg" />
     <Content Include="Hình phụ kiện\kiotviet_edf0eef0c48e4fa3aec9d39bb2c7c2a6.jpg" />
+    <Content Include="Hình phụ kiện\kiotviet_f2ed53c106af42bc9ccae83d44ddc587.png" />
+    <Content Include="Hình phụ kiện\kiotviet_f37f4fc0f042435d9a1d7f682983b7a9.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_f86b3ed5708a41cdae73defedbe4f030.jpeg" />
+    <Content Include="Hình phụ kiện\kiotviet_fd19facbe29140249e7225e551efda91.jpg" />
+    <Content Include="Hình phụ kiện\maintenance.png" />
+    <Content Include="Hình phụ kiện\meo-munchkin-1024x823.jpg" />
+    <Content Include="Hình phụ kiện\meo-munchkin-2.jpg" />
+    <Content Include="Hình phụ kiện\meo-munchkin.jpg" />
+    <Content Include="Hình phụ kiện\money-bag-franc.png" />
+    <Content Include="Hình phụ kiện\pay-date.png" />
+    <Content Include="Hình phụ kiện\pixel-cat.png" />
+    <Content Include="Hình phụ kiện\pngtree-cartoon-pet-icon-download-png-image_4462488.jpg" />
+    <Content Include="Hình phụ kiện\procurement.png" />
+    <Content Include="Hình phụ kiện\project-management.png" />
+    <Content Include="Hình phụ kiện\save-all.png" />
+    <Content Include="Hình phụ kiện\search-more.png" />
+    <Content Include="Hình phụ kiện\search.png" />
+    <Content Include="Hình phụ kiện\service.png" />
+    <Content Include="Hình phụ kiện\snail.png" />
+    <Content Include="Hình phụ kiện\soccer-yellow-card.png" />
+    <Content Include="Hình phụ kiện\supplier.png" />
+    <Content Include="Hình phụ kiện\support.png" />
+    <Content Include="Hình phụ kiện\table-properties.png" />
+    <Content Include="Hình phụ kiện\thanh-bieu-cam-cho-husky.jpg" />
+    <Content Include="Hình phụ kiện\time.png" />
+    <Content Include="Hình phụ kiện\tip.png" />
+    <Content Include="Hình phụ kiện\tải xuống %281%29.jpg" />
+    <Content Include="Hình phụ kiện\tải xuống %281%29.png" />
+    <Content Include="Hình phụ kiện\tải xuống %282%29.jpg" />
+    <Content Include="Hình phụ kiện\tải xuống %282%29.png" />
+    <Content Include="Hình phụ kiện\tải xuống %283%29.jpg" />
+    <Content Include="Hình phụ kiện\tải xuống %284%29.jpg" />
+    <Content Include="Hình phụ kiện\tải xuống.jpg" />
+    <Content Include="Hình phụ kiện\unnamed.jpg" />
+    <Content Include="Hình phụ kiện\us-news.png" />
+    <Content Include="Hình phụ kiện\user-group-man-man.png" />
+    <Content Include="Hình phụ kiện\WebFluffy2.jpg" />
+    <Content Include="Hình phụ kiện\work.png" />
+    <Content Include="Hình phụ kiện\xls.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -1497,8 +1686,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Picture\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

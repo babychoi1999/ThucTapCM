@@ -126,18 +126,29 @@ namespace BaitaplonAPI
             {
                 return;
             }
-            using(quanlithucungEntities1 quanli = new quanlithucungEntities1())
+            try
             {
-                NhanVien nv = quanli.NhanViens.FirstOrDefault(p => p.MaNV == manv);
-               
-                nv.MaCV = cbchucvu.SelectedValue.ToString();
-                nv.TenNV = txtten.Text;
-                nv.sodienthoai = int.Parse(txtsdt.Text);
-                nv.DiaChi = txtdiachi.Text;
-                nv.CMND = int.Parse(txtcmnd.Text);          
-                quanli.SaveChanges();
-                MessageBox.Show("Sửa thành công!");
+                using (quanlithucungEntities1 quanli = new quanlithucungEntities1())
+                {
+                    NhanVien nv = quanli.NhanViens.FirstOrDefault(p => p.MaNV == manv);
+
+                    nv.MaCV = cbchucvu.SelectedValue.ToString();
+                    nv.TenNV = txtten.Text;
+                    nv.sodienthoai = int.Parse(txtsdt.Text);
+                    nv.DiaChi = txtdiachi.Text;
+                    nv.CMND = int.Parse(txtcmnd.Text);
+                    nv.Gmail = txtemail.Text;
+                    quanli.SaveChanges();
+                    MessageBox.Show("Sửa thành công!");
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Không thể sửa, vui lòng kiểm tra lại");
+                return;
+            }
+            
         }
         public DevExpress.XtraEditors.SimpleButton getsua()
         {
@@ -161,6 +172,7 @@ namespace BaitaplonAPI
                     txtcmnd.Text = nv.CMND.ToString();
                     txtdiachi.Text = nv.DiaChi.ToString();
                     txtsdt.Text = nv.sodienthoai.ToString();
+                    txtemail.Text = nv.Gmail;
                     cbchucvu.SelectedValue = nv.MaCV;
                 }
 

@@ -21,7 +21,6 @@ namespace BaitaplonAPI
             this.CTHoaDons = new HashSet<CTHoaDon>();
             this.CTPHUKIENs = new HashSet<CTPHUKIEN>();
             this.CTTHUCPHAMs = new HashSet<CTTHUCPHAM>();
-            this.CTUuDais = new HashSet<CTUuDai>();
         }
     
         public string MaHD { get; set; }
@@ -40,8 +39,7 @@ namespace BaitaplonAPI
         public virtual ICollection<CTPHUKIEN> CTPHUKIENs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTTHUCPHAM> CTTHUCPHAMs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CTUuDai> CTUuDais { get; set; }
+        public virtual CTUuDai CTUuDai { get; set; }
         public virtual DangNhap DangNhap { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         public virtual UuDaiHD UuDaiHD { get; set; }
