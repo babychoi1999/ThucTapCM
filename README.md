@@ -1,12 +1,12 @@
 #Quanlithucung
-THỰC TẬP CHUYÊN MÔN NĂM HỌC 2019-2020
-Họ tên:Trần Ngọc Tuân Mã sinh viên: 5851071084 Lớp: Công nghệ thông tin K58
+#THỰC TẬP CHUYÊN MÔN NĂM HỌC 2019-2020
+#Họ tên:Trần Ngọc Tuân Mã sinh viên: 5851071084 Lớp: Công nghệ thông tin K58
 
-Đề tài:  Ứng dụng C# Winform để quản lý cửa hàng bán thú cưng
-Phần 1: Công nghệ sử dụng
-Sử dụng ngôn ngữ lập trình C# (Winform)
-Thư viện hỗ trợ: Guna framework, DevExpress, bunifu framework.
-Thiết kế cơ sở dữ liệu: Microsoft SQL Server Management Studio.
+#Đề tài:  Ứng dụng C# Winform để quản lý cửa hàng bán thú cưng
+#Phần 1: Công nghệ sử dụng
+#Sử dụng ngôn ngữ lập trình C# (Winform)
+#Thư viện hỗ trợ: Guna framework, DevExpress, bunifu framework.
+#Thiết kế cơ sở dữ liệu: Microsoft SQL Server Management Studio.
 Môi trường phát triển tích hợp: Microsoft Visual Studio 2019
 Phần 2: Các chức năng đã hoàn thành
 Quản lý thú cưng
